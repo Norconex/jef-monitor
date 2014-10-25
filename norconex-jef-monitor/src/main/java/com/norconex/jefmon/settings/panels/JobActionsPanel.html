@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+
+
+<div class="well">
+
+  <div class="container-fluid">
+    <h2><wicket:message key="action.title">Actions</wicket:message></h2>
+    
+    <div style="margin-bottom: 20px;"><wicket:message key="action.desc">Description</wicket:message></div>
+  </div>
+
+
+  <div class="container-fluid">
+    <div id="nx-drag-container" class="row">
+      <div class="col-sm-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <wicket:message key="action.available">Available Actions</wicket:message>
+            </h3>
+          </div>
+          <div id="nx-available-actions" class="connectedSortable list-group" style="min-height: 2.5em;">
+            <a href="#" wicket:id="avaiableActions" class="list-group-item">
+              <i wicket:id="actionCss"></i>
+              &nbsp;&nbsp;<span wicket:id="actionName">Action Name</span>
+            </a>
+          </div>
+        </div>
+      
+      </div>
+      <div class="col-sm-6">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <wicket:message key="action.selected">Selected Actions</wicket:message>
+            </h3>
+          </div>
+          <div id="nx-selected-actions" class="connectedSortable list-group" style="min-height: 2.5em;">
+            <a href="#" wicket:id="selectedActions" class="list-group-item">
+              <i wicket:id="actionCss"></i>
+              &nbsp;&nbsp;<span wicket:id="actionName">Action Name</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</wicket:panel>
+</html>

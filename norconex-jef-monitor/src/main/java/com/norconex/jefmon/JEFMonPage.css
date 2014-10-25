@@ -1,0 +1,57 @@
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+#nx-app .feedbackPanel {
+  list-style-type: none;
+  padding: 0px 0px 0px 10px;
+}
+#nx-app .feedbackPanel span.feedbackPanelERROR:before {
+  font-family: 'FontAwesome';
+  content: "\f071\00A0";   
+}
+
+#nx-app .feedbackPanel span.feedbackPanelSUCCESS:before {
+  font-family: 'FontAwesome';
+  content: "\f00c\00A0";   
+}
+
+
+#nx-app .wrap {
+    -ms-word-break: break-all;
+    word-break: break-all;
+
+ /* Non standard for webkit */
+     word-break: break-word;
+
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+}
+
+#ajaxveil {
+  display: none;
+  z-index: 99999999;
+  text-align: center;
+  position: fixed;
+  top: -5px;
+  width: 100%;
+}
+#ajaxveil-inner {
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 10px 10px 10px;
+  
+  height: 48px;
+  margin: 0px;
+  border: 3px solid white;
+  box-shadow: 0px 0px 10px #666666;
+}
+#ajaxveil img {
+  vertical-align: baseline;
+}
+.norconex-label {
+  color: #225e9b;
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+</head>
+<body>
+<wicket:extend>
+
+
+<div class="panel panel-default nx-settings">
+
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">
+      <a wicket:id="nameBack"><span wicket:id="name">Name</span></a>
+      <i class="fa fa-angle-right text-info"></i> 
+      <span class="text-muted">
+        <wicket:message key="settings.heading">Settings</wicket:message>
+      </span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <form wicket:id="form">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div wicket:id="configPanel"></div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8 text-right">
+            <div class="pull-right">
+              <button type="submit" wicket:id="save" 
+                  class="btn btn-primary nx-jef-settings-save">
+                <i class="fa fa-check"></i> <wicket:message key="btn.save">Save</wicket:message>
+              </button>
+            </div>
+            <a wicket:id="close" 
+                class="btn btn-default nx-jef-settings-close pull-right"
+                style="margin: 0px 15px 0px 50px;">
+              <i class="fa fa-times"></i> <wicket:message key="btn.back">Cancel</wicket:message>
+            </a>
+            <div wicket:id="feedback" class="text-success h4 pull-right"></div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+
+</wicket:extend>
+</body>
+</html>

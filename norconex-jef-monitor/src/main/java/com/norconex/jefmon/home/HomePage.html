@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+  <script type="text/javascript">
+  var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
+  
+  
+    $(document).ready(function () {
+        
+        myLayout = $('#nx-home-layout').layout({
+            //west__size:                 150,
+            //west__spacing_closed:       20,
+            //west__togglerLength_closed: 100,
+            //west__togglerAlign_closed:  "top",
+            //west__togglerContent_closed:"M<BR>E<BR>N<BR>U",
+            //west__togglerTip_closed:    "Open & Pin Menu",
+            //west__sliderTip:            "Slide Open Menu",
+            //west__slideTrigger_open:    "mouseover",
+            center__maskContents:       true // IMPORTANT - enable iframe masking
+        });
+        
+        
+        //$("#nx-home-layout").layout();
+        
+        $(window).resize(function() {
+            $("#nx-home-layout").height($(window).height() - 60);
+        });
+        $(window).trigger('resize');
+    });
+  </script>
+</wicket:head>
+<body>
+<wicket:extend>
+
+  <div id="ajaxveil">
+    <h1 id="ajaxveil-inner" class="label label-primary">
+      <wicket:link><img src="loading.gif"></wicket:link>
+      <wicket:message key="loading">Loading...</wicket:message>
+    </h1>
+  </div>
+
+  <div wicket:id="header">Header</div>
+
+  <div id="nx-home-layout">
+    <div class="ui-layout-north" wicket:id="instances">Instances</div>
+    <iframe class="ui-layout-center" id="instanceJobs" xxwicket:id="instanceJobs" src="/jobs"></iframe>
+  </div>
+
+</wicket:extend>
+</body>
+</html>
+

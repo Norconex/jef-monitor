@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+
+<div class="container-fluid">
+
+  <h2><wicket:message key="intro.heading"/></h2>
+  <div><wicket:message key="intro.body"/></div>
+  
+  <form class="form-horizontal">
+    <div class="form-group" style="padding-top: 20px;">
+      <label wicket:id="languageLabel" style="padding-top: 5px;" for="language" class="col-md-2 control-label text-right">
+        <wicket:message key="intro.locale">Language</wicket:message>
+      </label>
+      <div class="col-md-4">
+        <select wicket:id="language" class="form-control">
+          <option>English</option>
+          <option>French</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+</wicket:panel>
+</html>

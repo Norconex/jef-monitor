@@ -1,0 +1,168 @@
+
+.nx-file-icon:before {
+  font-family: 'FontAwesome';
+  XXfont-size: 16px;
+  XXcontent: "\f0f6\00A0";    
+  content: "\f15b\00A0";    
+}
+.nx-folder-icon:before {
+  font-family: 'FontAwesome';
+  XXfont-size: 16px;
+  content: "\f07b\00A0";    
+}
+
+
+#nx-drag-container a {
+  color: #428BCA;
+  text-decoration: none;
+}
+#nx-drag-container a:active,
+#nx-drag-container a:hover {
+  outline-width: 0px;
+  outline-style: none;
+  text-decoration: none;
+}
+#nx-drag-container a:hover,
+#nx-drag-container a:focus {
+  color: #2a6496;
+}
+#nx-drag-container a:focus {
+  outline-width: thin;
+  outline-style: dotted;
+  outline-offset: -2px;
+}
+
+#nx-drag-container .ui-state-highlight { 
+  height: 3.0em; 
+  display: block;
+  background-image: none;
+  background-color: white;
+  border: 1px dashed;
+  margin-top: 1px;
+}
+
+
+/*
+.ui-tooltip {
+  max-width: 600px;
+}
+
+.nx-jef-actions,
+.nx-jef-classpath,
+.nx-jef-suites {
+  width:100%;
+}
+
+.nx-jef-actions button,
+.nx-jef-classpath button,
+.nx-jef-suites button {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.nx-jef-classpath button {
+  width:155px;
+}
+.nx-jef-actions button,
+.nx-jef-suites button {
+  width:145px;
+}
+.nx-jef-actions td,
+.nx-jef-classpath td,
+.nx-jef-suites td {
+  vertical-align: top;
+}
+select.nx-jef-actions-select,
+select.nx-jef-classpath-select,
+select.nx-jef-suites-select {
+  border: 1px solid #ccc;
+  font-size: 12px;
+  width: 100%; 
+  height: 150px;
+}
+select.nx-jef-actions-dropdown,
+select.nx-jef-suites-dropdown {
+  margin-top: 5px;
+  width: 100%; 
+}
+td.nx-jef-classpath-buttons {
+  text-align: right;
+  width: 170px;
+  font-size: 10px;
+}
+td.nx-jef-actions-buttons,
+td.nx-jef-suites-buttons {
+  text-align: right;
+  width: 160px;
+}
+
+option.nx-jef-actions-off,
+option.nx-jef-actions-on,
+option.nx-jef-suites-off,
+option.nx-jef-suites-on,
+option.nx-jef-classpath-jar,
+option.nx-jef-classpath-folder { 
+  padding-bottom: 2px;
+  background-repeat: no-repeat;
+  background-position: 3px top;
+  text-indent:20px;
+  cursor: pointer;
+}
+option.nx-jef-classpath-badfile {
+  color: red;
+  background-color: #FFEEEE;
+}
+
+option.nx-jef-actions-off:HOVER,
+option.nx-jef-actions-on:HOVER,
+option.nx-jef-suites-off:HOVER,
+option.nx-jef-suites-on:HOVER,
+option.nx-jef-classpath-jar:HOVER,
+option.nx-jef-classpath-folder:HOVER { 
+  background-color: #eeeeff;
+}
+option.nx-jef-classpath-jar {
+   background-image: url(jar.gif);
+}
+option.nx-jef-classpath-folder {
+   background-image: url(folder.gif);
+}
+option.nx-jef-suites-off {
+   background-image: url(factory-off.png);
+}
+option.nx-jef-suites-on {
+   background-image: url(factory.png);
+}
+option.nx-jef-actions-off {
+   background-image: url(action-off.png);
+}
+option.nx-jef-actions-on {
+   background-image: url(action.png);
+}
+.nx-jef-suitedialog {
+  padding: 10px 7px 0px 7px;
+}
+.nx-jef-suitedialog .label-above {
+  font-size:smaller;
+}
+.nx-jef-suitedialog table {
+  width: 100%;
+  margin-top: 20px;
+}
+.nx-jef-suitedialog table input {
+  width: 100%;
+}
+.nx-jef-suitedialog table .value {
+  width: 100%;
+}
+.nx-jef-suitedialog table .label {
+  padding-right: 5px;
+  text-align: right;
+  font-family: monospace;
+  font-size: larger;
+}
+.nx-jef-suitedialog table th {
+  font-weight: normal;
+  font-size:smaller;
+  text-align: left;
+}
+*/

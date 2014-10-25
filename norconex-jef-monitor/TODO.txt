@@ -1,0 +1,28 @@
+
+* Have jef monitor instances refresh their status every X seconds
+  in background thread.
+
+* Allow to upload jars / classes (as zip) in classpath settings panel
+
+* Allow to specify Jar directory for adding multiple jars at once.
+
+* Load a sample jar and jobs to have a working sample out of the box.
+
+* Fix classpath dialog title not being updated (when going from Jar to Folder)
+  maybe we need to create a new Dialog every time a button is pressed.
+
+* Add start/stop action, enabled with sample jar jobs.
+
+Acknowledgements:
+==================
+
+Icons:
+
+[Tango Library](http://tango.freedesktop.org/Tango_Desktop_Project) - Public Domain
+   - home.png
+   - root.png (derived from home)
+
+
+[FamFamFam](http://www.famfamfam.com/lab/icons/) - Mini contains 144 icons "available for
+   - jar.png
+   - folder.png

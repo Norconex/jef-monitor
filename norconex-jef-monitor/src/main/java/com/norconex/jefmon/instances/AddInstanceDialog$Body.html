@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+</wicket:head>
+<body>
+<wicket:panel>
+
+<form wicket:id="form" class="form-horizontal" role="form">
+
+  <div class="form-group">
+    <label wicket:id="url.label" for="url" class="col-sm-1 control-label">URL</label>
+    <div class="col-sm-11">
+      <input type="text" class="form-control" wicket:id="url" placeholder="http://somehost.com:1234">
+      <div wicket:id="feedback" class="text-danger">Feedback</div>
+    </div>
+  </div>
+
+
+</form>
+     
+</wicket:panel>
+</body>
+</html>

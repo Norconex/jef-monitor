@@ -1,0 +1,42 @@
+
+#nx-action-logviewer pre {
+  border: none;
+  background-color: white;
+  overflow: visible;
+}
+
+
+#nx-action-logviewer-lines {
+  padding: 0px;
+  margin: 0px;
+}
+
+#nx-action-logviewer-lines > div {
+  overflow: auto;
+  min-height: 100px;
+}
+
+/*
+.jef-logviewer-loglines {
+  clear: both;
+  border: 1px solid #999999;
+  background-color: white;
+  overflow: auto;
+  max-height: 400px;
+}
+.jef-logviewer-loglines div {
+  padding: 5px;
+  font-family: monospace;
+}
+.jef-logviewer-loglines .even {
+  background-color: #FFFFFF;
+}
+.jef-logviewer-loglines .odd {
+  background-color: #EEEEEE;
+}
+.jef-logviewer-form {
+  height: 30px;
+  margin-bottom: 5px;
+  text-align: right;
+}
+*/

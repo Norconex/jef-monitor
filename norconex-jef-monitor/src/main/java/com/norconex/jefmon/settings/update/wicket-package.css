@@ -1,0 +1,25 @@
+
+.nx-jef-settings-save,
+.nx-jef-settings-close {
+  min-width: 150px;
+}
+
+.nx-settings .panel-title a {
+  color: #428BCA;
+  text-decoration: none;
+}
+.nx-settings .panel-title a:active,
+.nx-settings .panel-title a:hover {
+  outline-width: 0px;
+  outline-style: none;
+  text-decoration: none;
+}
+.nx-settings .panel-title a:hover,
+.nx-settings .panel-title a:focus {
+  color: #2a6496;
+}
+.nx-settings .panel-title a:focus {
+  outline-width: thin;
+  outline-style: dotted;
+  outline-offset: -2px;
+}

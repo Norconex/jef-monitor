@@ -1,0 +1,124 @@
+package com.norconex.jefmon.instance;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import com.norconex.commons.lang.Sleeper;
+import com.norconex.jef4.status.JobSuiteStatusSnapshot;
+import com.norconex.jefmon.JEFMonConfig;
+
+public class JobSuitesStatusesMonitor implements Serializable {
+
+    private static final long serialVersionUID = 5607001500218702705L;
+
+    private static final Logger LOG = LogManager.getLogger(
+            JobSuitesStatusesMonitor.class);
+    
+    public static final long DEFAULT_SCAN_INTERVAL = 5 * 1000;
+    
+    private Monitor monitor;
+
+    public JobSuitesStatusesMonitor(JEFMonConfig config) {
+        this(config, DEFAULT_SCAN_INTERVAL);
+    }
+    public JobSuitesStatusesMonitor(
+            JEFMonConfig config, long scanInterval) {
+        super();
+        this.monitor = new Monitor(config, scanInterval);
+    }
+
+    public Collection<JobSuiteStatusSnapshot> getJobSuitesStatuses() {
+        return monitor.getStatuses().values();
+    }
+
+    public void startMonitoring() {
+        new Thread(monitor).start();
+    }
+
+    public void stopMonitoring() {
+        monitor.stopMe();
+    }
+
+    private static class Monitor implements Runnable, Serializable {
+
+        private static final long serialVersionUID = 2775523547279413259L;
+        
+        private static final Map<File, JobSuiteStatusSnapshot> STATUSES =
+                Collections.synchronizedMap(
+                        new HashMap<File, JobSuiteStatusSnapshot>());
+        private final JEFMonConfig cfg;
+        private boolean running;
+        private boolean stopme;
+        private final long interval;
+        
+        public Monitor(JEFMonConfig cfg, long interval) {
+            super();
+            this.cfg = cfg;
+            this.interval = interval;
+        }
+
+        private Map<File, JobSuiteStatusSnapshot> getStatuses() {
+            return STATUSES;
+        }
+        
+        @Override
+        public void run() {
+            if (running) {
+                throw new IllegalStateException(
+                        "JobSuitesStatusesMonitor already running.");
+            }
+            running = true;
+            stopme = false;
+            while (!stopme) {
+                syncIndexFiles();
+                Sleeper.sleepMillis(interval);
+            }
+            running = false;
+        }
+        
+        public void stopMe() {
+            stopme = true;
+        }
+        
+        private void syncIndexFiles() {
+            Set<File> files = new HashSet<>();
+            for (File file : cfg.getMonitoredPaths()) {
+                if (!file.exists()) {
+                    continue;
+                }
+                if (file.isFile()) {
+                    files.add(file);
+                } else if (file.isDirectory()) {
+                    files.addAll(Arrays.asList(file.listFiles(
+                            (FilenameFilter) new SuffixFileFilter(".index"))));
+                }
+            }
+            // remove suite statuses those that no longer have an index file.
+            STATUSES.keySet().retainAll(files);
+
+            // add/replace suite statuses
+            for (File file : files) {
+                try {
+                    STATUSES.put(file, 
+                            JobSuiteStatusSnapshot.newSnapshot(file));
+                } catch (IOException e) {
+                    LOG.error("Cannot sync suite statuses for index file: "
+                            + file, e);
+                }
+            }
+        }
+    }
+}

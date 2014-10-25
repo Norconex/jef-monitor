@@ -1,0 +1,33 @@
+<html xmlns:wicket>
+<wicket:head>
+  <title>JEF Web Monitor</title>
+</wicket:head>
+<wicket:panel>
+
+<div wicket:id="treeDialog"><div class="nx-action-dialog" wicket:id="dialog"></div></div>
+
+<div id="nx-instance" class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left" wicket:id="name">Selected Instance</h3>
+    <div class="pull-right" wicket:id="toolbar"></div>
+  </div>
+  <div class="panel-body">
+    <div class="jef-tree" wicket:id="treeTable"></div>
+  </div>
+</div>
+
+<!-- 
+<script>
+$(function() {
+    $(".nx-action-button").click(function() {
+        if (parent) {
+            //alert('header' + parent.$("body").html());
+            $(".nx-action-dialog").prependTo(parent.$("#nx-app"));
+        }
+    });
+});
+</script>
+ -->
+
+</wicket:panel>
+</html>

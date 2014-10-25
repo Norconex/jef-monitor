@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+
+<div id="nx-action-logviewer">
+  <div class="panel panel-default">
+    <div id="nx-action-logviewer-head" class="panel-heading" style="margin-bottom: 0px; padding-bottom: 0px;">
+      <form wicket:id="form" class="clearfix">
+        <div class="pull-left">
+          <span style="vertical-align:text-bottom;"><wicket:message key="viewer.show">Show</wicket:message></span>
+          <select wicket:id="readDirection" data-width="120px">
+            <option>last</option>
+            <option>...</option>
+          </select>
+          <select wicket:id="lineQty" data-width="70px">
+            <option>10</option>
+            <option>...</option>
+          </select>
+          <select wicket:id="lineStyle">
+            <option>full</option>
+            <option>compact</option>
+          </select>
+        </div>
+        <div class="pull-right">
+          <button style="vertical-align:top;" class="btn btn-primary" wicket:id="refresh">
+            <i class="fa fa-refresh"></i>
+            <wicket:message key="viewer.refresh"/>
+          </button>  
+        </div>
+      </form>
+    </div>
+    <div id="nx-action-logviewer-lines" class="panel-body">
+      <div wicket:id="logLinesWrapper">
+        <pre wicket:id="logLines"></pre>
+      </div>
+    </div>
+    <div id="nx-action-logviewer-foot" class="panel-footer text-right">
+      <a class="btn btn-default" href="#" onclick="window.close();">
+        <i class="fa fa-times"></i>
+        <wicket:message key="viewer.close">Close</wicket:message>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function resizeLogViewerLines() {
+    var bodyheight = $(window).height();
+    $("#nx-action-logviewer-lines pre").height(bodyheight - 160);
+}
+$(document).ready(function() {
+    resizeLogViewerLines();
+});
+$(window).resize(function() {
+    resizeLogViewerLines();
+});
+</script>
+
+</wicket:panel>
+</html>

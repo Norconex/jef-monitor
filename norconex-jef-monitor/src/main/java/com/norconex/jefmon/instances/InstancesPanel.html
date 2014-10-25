@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+
+<div class="nx-addInstanceDialog" wicket:id="addInstanceDialog"></div>
+
+<div id="nx-instances" class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left"><wicket:message key="heading">Monitored Installations</wicket:message></h3>
+    <a wicket:id="addInstance" class="pull-right nobusy nx-addInstanceButton" style="cursor: pointer;">
+      <i class="fa fa-plus nobusy"></i> <wicket:message key="btn.add">Add</wicket:message>...
+    </a>
+  </div>
+  <div class="panel-body">
+
+    <table wicket:id="instancesTable" class="table table-condensed table-hover small">
+      <thead>
+        <tr>
+            <th><wicket:message key="col.name">Name</wicket:message></th>
+            <th><wicket:message key="col.location">Location</wicket:message></th>
+            <th><wicket:message key="col.completed">Completed</wicket:message></th>
+            <th><wicket:message key="col.running">Running</wicket:message></th>
+            <th><wicket:message key="col.aborted">Aborted</wicket:message></th>
+            <th><wicket:message key="col.premature">Premature</wicket:message></th>
+            <th><wicket:message key="col.stopped">Stopped</wicket:message></th>
+            <th><wicket:message key="col.stopping">Stopping</wicket:message></th>
+            <th><wicket:message key="col.unknown">Unknown</wicket:message></th>
+            <th><wicket:message key="col.total">Total</wicket:message></th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr wicket:id="instances">
+            <td><span wicket:id="name">Name</span></td>
+            <td><span wicket:id="url">URL</span> </td>
+            <td wicket:id="statuses" class="nx-jef-instances-status">
+                <img wicket:id="statusIcon" height="16" width="16">
+                <span wicket:id="statusCount">Status Count</span>
+            </td>
+            <td class="nx-jef-instances-status">
+                <span wicket:id="status-total">Total</span>
+            </td>
+            <td class="nx-jef-instances-remove">
+              <a wicket:id="remove" class="btn btn-primary btn-xs">
+                <i class="glyphicon glyphicon-remove"></i>
+              </a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<script>
+$(function() {
+    $(".nx-addInstanceButton").click(function() {
+        $(".nx-addInstanceDialog").appendTo("body");
+    });
+});
+</script>
+
+<!-- 
+<div class="nx-jef-instances-toolbar">
+  <div class="nx-jef-instances-toolbar-name">
+    <h1 xwicket:id="name">JEF Monitor Instances</h1>
+  </div>
+  <div class="nx-jef-instances-toolbar-buttons">
+    <form wicket:id="form">
+      <button wicket:id="addInstance">
+        <xwicket:message xkey="manage">Add...</xwicket:message>
+      </button>
+    </form>
+  </div>
+  <div style="clear:both;"></div>
+</div>
+
+
+<table wicket:id="instancesTable" class="nx-jef-instances">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th class="nx-jef-instances-status">Completed</th>
+        <th class="nx-jef-instances-status">Running</th>
+        <th class="nx-jef-instances-status">Aborted</th>
+        <th class="nx-jef-instances-status">Premature</th>
+        <th class="nx-jef-instances-status">Stopped</th>
+        <th class="nx-jef-instances-status">Stopping</th>
+        <th class="nx-jef-instances-status">Not Ran</th>
+        <th class="nx-jef-instances-status">Unknown</th>
+        <th class="nx-jef-instances-status">Total</th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr wicket:id="instances">
+        <td><span wicket:id="name">Name</span></td>
+        <td><span wicket:id="url">URL</span> </td>
+        <td wicket:id="statuses" class="nx-jef-instances-status">
+            <img wicket:id="statusIcon" height="16" width="16">
+            <span wicket:id="statusCount">Status Count</span>
+        </td>
+        <td class="nx-jef-instances-status">
+            <span wicket:id="status-total">Total</span>
+        </td>
+        <td><img wicket:id="removeIcon" /></td>
+    </tr>
+  </tbody>
+</table>
+
+ -->
+
+</wicket:panel>
+</html>

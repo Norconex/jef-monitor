@@ -1,0 +1,3 @@
+Execute the com.norconex.jefmon.server.JEFMonServer class and 
+open your browser at localhost and the port specified under 
+/config/setup.properties

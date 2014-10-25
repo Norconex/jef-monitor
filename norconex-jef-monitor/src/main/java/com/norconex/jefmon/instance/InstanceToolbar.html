@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+
+<div id="nx-instance-toolbar">
+
+  <a wicket:id="expandAll">
+    <i class="fa fa-angle-double-down"></i> <wicket:message key="btn.expandall">Expand All</wicket:message>
+  </a>
+
+  <a wicket:id="collapseAll">
+    <i class="fa fa-angle-double-right"></i> <wicket:message key="btn.collapseall">Collapse All</wicket:message>
+  </a>
+
+  <ul class="nav navbar-right"  style="margin-left: 25px;">
+    <li class="dropdown nobusy">
+      <a href="#" class="dropdown-toggle nobusy" data-toggle="dropdown">
+        <i class="fa fa-cog nobusy"></i> 
+        <span class="nobusy"><wicket:message key="btn.settings">Settings</wicket:message></span><b class="caret nobusy"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a wicket:id="name" href="#"><i class="fa fa-cog"></i> <wicket:message key="settings.instanceName">Name</wicket:message></a></li>
+        <li><a wicket:id="jobs" href="#"><i class="fa fa-cog"></i> <wicket:message key="settings.jobLocations">Jobs</wicket:message></a></li>
+        <li><a wicket:id="actions" href="#"><i class="fa fa-cog"></i> <wicket:message key="settings.jobActions">Actions</wicket:message></a></li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
+
+</wicket:panel>
+</body>
+</html>

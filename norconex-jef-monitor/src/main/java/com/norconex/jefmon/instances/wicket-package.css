@@ -1,0 +1,103 @@
+#nx-instances {
+  margin-bottom: 3px;
+}
+#nx-instances .panel-heading .btn {
+  min-width: 100px;
+}
+
+#nx-instances .panel-body {
+  padding: 5px;
+}
+
+td.nx-jef-instances-remove a {
+  height: 16px;
+  xpadding-top: 0px;
+  xpadding-bottom: 0px;
+}
+td.nx-jef-instances-remove i {
+  display: block;
+  font-size: 4px;
+  xmargin-top: -1px;
+}
+
+/*
+
+table.nx-jef-instances {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+.nx-jef-instances tr.even {
+  background-color: #FFFFFF;
+}
+.nx-jef-instances tr.odd {
+  background-color: #fbf6f6;
+}
+.nx-jef-instances th {
+  text-align: left;
+  xxpadding: 0px 5px 0px 3px;
+  border-bottom: 1px solid #ccc;
+  xxpadding-top: 5px;
+  xxbackground-color: #e0cfc2;
+}
+.nx-jef-instances th.nx-jef-instances-status {
+  text-align: center;
+}
+.nx-jef-instances td.nx-jef-instances-status {
+  text-align: center;
+}
+.nx-jef-instances td {
+  xxfont-size: 10px;
+  border: 0px solid #eeeeee;
+  padding: 0px 5px 0px 3px;
+}
+.nx-jef-instances tbody tr:hover {
+  background-color: #e0cfc2;
+  cursor: pointer;
+}
+
+.nx-jef-instances-toolbar {
+    padding: 5px 5px 5px 5px;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #ccc;
+}
+.nx-jef-instances-toolbar-buttons {
+    float: right;
+}
+.nx-jef-instances-toolbar-name {
+    float: left;
+}
+.nx-jef-instances-toolbar-name h1, h2 {
+    margin: 0px;
+    padding: 0px 0px 0px 2px;
+}
+.nx-jef-instances-toolbar button {
+    min-width: 125px;
+}
+*/
+.nx-jef-instances-status img {
+    vertical-align: text-bottom;
+}
+/*
+.nx-jef-instances-status span {
+    font-weight: bold;
+}
+.nx-jef-instances-form input {
+    width: 100%;
+    margin-top: 5px;
+}
+.nx-jef-instances-form span {
+  font-size: smaller;
+  font-weight: bold;
+}
+.nx-jef-instances-invalid {
+  background-color: #666666;
+  cursor: default;
+}
+
+.nx-jef-instances-tooltip h3 {
+  padding: 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+*/
