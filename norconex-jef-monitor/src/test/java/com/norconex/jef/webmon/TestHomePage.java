@@ -1,7 +1,5 @@
 package com.norconex.jef.webmon;
 
-import junit.framework.TestCase;
-
 import org.apache.wicket.util.tester.WicketTester;
 
 import com.norconex.jefmon.home.HomePage;
@@ -9,7 +7,7 @@ import com.norconex.jefmon.home.HomePage;
 /**
  * Simple test using the WicketTester
  */
-public class TestHomePage extends TestCase
+public class TestHomePage //extends TestCase
 {
 	private WicketTester tester;
 
