@@ -51,13 +51,8 @@ public class ViewJobLogAction implements IJobAction {
 
     @Override
     public Component execute(JobStatusTreeNode jobStatus, String componentId) {
-        ILogManager logManager = 
-                jobStatus.getSuiteStatusSnapshot().getLogManager();
-        
         return new LogViewerActionPanel(componentId, 
-                new JefLogLinesReader(logManager, 
-                      jobStatus.getSuiteStatusSnapshot().getRoot().getJobId(),
-                      jobStatus.getJobId()));
+                new JefLogLinesReader(jobStatus, true));
     }
     
 //    public IModel<String> getTooltip(final JobStatusTreeNode job) {

@@ -22,7 +22,9 @@ import com.norconex.commons.wicket.markup.html.panel.CssPanel;
 public class LogViewerActionPanel extends CssPanel {
 
     private static final long serialVersionUID = -7099355429414346698L;
+    
     private final LinesReader linesReader;
+    
     private final WebMarkupContainer logLinesWrapper;
 
     public LogViewerActionPanel(String id, LinesReader linesReader) {

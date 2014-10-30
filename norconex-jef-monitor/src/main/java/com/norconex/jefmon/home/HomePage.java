@@ -9,7 +9,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import com.norconex.commons.wicket.markup.head.HeaderContributor;
 import com.norconex.jefmon.JEFMonPage;
 import com.norconex.jefmon.instances.InstancesPanel;
-import com.norconex.jefmon.instances.JEFMonInstance;
+import com.norconex.jefmon.instances.InstanceSummary;
 
 /**
  * JEF Web Monitoring main overview page.
@@ -42,7 +42,7 @@ public class HomePage extends JEFMonPage {
             private static final long serialVersionUID = 8327373240621977294L;
             @Override
             protected void onInstanceClick(AjaxRequestTarget target,
-                    JEFMonInstance instance) {
+                    InstanceSummary instance) {
                 instanceURL = instance.getUrl();
                 String pageURL = instanceURL;
                 if (instanceURL == null) {

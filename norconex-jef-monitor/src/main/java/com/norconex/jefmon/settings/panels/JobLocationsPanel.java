@@ -2,6 +2,7 @@ package com.norconex.jefmon.settings.panels;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -35,7 +36,7 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
 
     final WebMarkupContainer formWrapper = 
             new WebMarkupContainer("formWrapper");
-    private final List<File> locations;
+    private final List<File> locations = new ArrayList<>();
     private final ListMultipleChoice<File> locationsSelect;
     private final WebMarkupContainer addFileButton;
     private final WebMarkupContainer addFolderButton;
@@ -45,7 +46,7 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         super(id, dirtyConfig);
         setOutputMarkupId(true);
 
-        locations = Arrays.asList(dirtyConfig.getMonitoredPaths());
+        locations.addAll(Arrays.asList(dirtyConfig.getMonitoredPaths()));
         
         formWrapper.setOutputMarkupId(true);
         add(formWrapper);

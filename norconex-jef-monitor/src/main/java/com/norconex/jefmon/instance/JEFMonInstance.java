@@ -15,26 +15,27 @@ import java.util.Set;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.wicket.util.lang.Objects;
 
 import com.norconex.commons.lang.Sleeper;
 import com.norconex.jef4.status.JobSuiteStatusSnapshot;
 import com.norconex.jefmon.JEFMonConfig;
 
-public class JobSuitesStatusesMonitor implements Serializable {
+public class JEFMonInstance implements Serializable {
 
     private static final long serialVersionUID = 5607001500218702705L;
 
     private static final Logger LOG = LogManager.getLogger(
-            JobSuitesStatusesMonitor.class);
+            JEFMonInstance.class);
     
     public static final long DEFAULT_SCAN_INTERVAL = 5 * 1000;
     
-    private Monitor monitor;
+    private final Monitor monitor;
 
-    public JobSuitesStatusesMonitor(JEFMonConfig config) {
+    public JEFMonInstance(JEFMonConfig config) {
         this(config, DEFAULT_SCAN_INTERVAL);
     }
-    public JobSuitesStatusesMonitor(
+    public JEFMonInstance(
             JEFMonConfig config, long scanInterval) {
         super();
         this.monitor = new Monitor(config, scanInterval);
@@ -44,6 +45,16 @@ public class JobSuitesStatusesMonitor implements Serializable {
         return monitor.getStatuses().values();
     }
 
+    public JobSuiteStatusSnapshot getJobSuiteStatuses(String suiteId) {
+        for (JobSuiteStatusSnapshot snapshot : getJobSuitesStatuses()) {
+            if (Objects.equal(snapshot.getRoot().getJobId(), suiteId)) {
+                return snapshot;
+            }
+        }
+        return null;
+    }
+
+    
     public void startMonitoring() {
         new Thread(monitor).start();
     }
@@ -78,7 +89,7 @@ public class JobSuitesStatusesMonitor implements Serializable {
         public void run() {
             if (running) {
                 throw new IllegalStateException(
-                        "JobSuitesStatusesMonitor already running.");
+                        "JEFMonInstance already running.");
             }
             running = true;
             stopme = false;

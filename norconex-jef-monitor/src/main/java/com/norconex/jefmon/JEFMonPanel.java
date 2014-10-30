@@ -3,7 +3,7 @@ package com.norconex.jefmon;
 import org.apache.wicket.model.IModel;
 
 import com.norconex.commons.wicket.markup.html.panel.CssPanel;
-import com.norconex.jefmon.instance.JobSuitesStatusesMonitor;
+import com.norconex.jefmon.instance.JEFMonInstance;
 
 public class JEFMonPanel extends CssPanel {
 
@@ -38,7 +38,7 @@ public class JEFMonPanel extends CssPanel {
     public JEFMonConfig getJEFMonConfig() {
         return getApp().getConfig();
     }
-    public JobSuitesStatusesMonitor getJobSuitesStatusesMonitor() {
+    public JEFMonInstance getJobSuitesStatusesMonitor() {
         return getApp().getJobSuitesStatusesMonitor();
     }
 }

@@ -9,7 +9,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 
 import com.norconex.jef4.status.JobState;
 
-public class JEFMonInstance implements Serializable {
+public class InstanceSummary implements Serializable {
 
     private static final long serialVersionUID = 932346719888464820L;
 
@@ -19,7 +19,7 @@ public class JEFMonInstance implements Serializable {
     private final Map<JobState, MutableInt> statuses = new HashMap<>();
     private String remoteError;
 
-    public JEFMonInstance(String url) {
+    public InstanceSummary(String url) {
         super();
         this.url = url;
     }

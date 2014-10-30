@@ -17,7 +17,7 @@ import com.norconex.jef4.status.JobState;
 import com.norconex.jefmon.JEFMonConfig;
 import com.norconex.jefmon.JEFMonSession;
 import com.norconex.jefmon.instances.InstancesManager;
-import com.norconex.jefmon.instances.JEFMonInstance;
+import com.norconex.jefmon.instances.InstanceSummary;
 
 @SuppressWarnings("nls")
 public class JobSuiteProgressJsonPage extends WebPage {
@@ -52,7 +52,7 @@ public class JobSuiteProgressJsonPage extends WebPage {
             OutputStreamWriter out =
                     new OutputStreamWriter(response.getOutputStream());
 
-            JEFMonInstance instance = 
+            InstanceSummary instance = 
                     InstancesManager.createThisJefMonInstance();
             JSONWriter writer = new JSONWriter(out)
                 .object()

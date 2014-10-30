@@ -20,7 +20,7 @@ import org.apache.wicket.request.resource.SharedResourceReference;
 import com.norconex.commons.lang.ClassFinder;
 import com.norconex.jefmon.home.HomePage;
 import com.norconex.jefmon.instance.InstancePage;
-import com.norconex.jefmon.instance.JobSuitesStatusesMonitor;
+import com.norconex.jefmon.instance.JEFMonInstance;
 import com.norconex.jefmon.instance.action.IJobAction;
 import com.norconex.jefmon.markup.html.image.JEFImages;
 import com.norconex.jefmon.settings.initial.InitialSetupPage;
@@ -43,7 +43,7 @@ public class JEFMonApplication extends WebApplication {
 //    private static final String PARAM_LOCALES = "locales";
 
     //private transient List<JobSuite> jobSuites;
-    private final JobSuitesStatusesMonitor statusesMonitor;
+    private final JEFMonInstance statusesMonitor;
     private final JEFMonConfig monitorConfig;
     private final Locale[] supportedLocales;
     private final List<IJobAction> allJobsActions = new ArrayList<>();
@@ -56,7 +56,7 @@ public class JEFMonApplication extends WebApplication {
         } else {
             this.monitorConfig = config;
         }
-        this.statusesMonitor = new JobSuitesStatusesMonitor(this.monitorConfig);
+        this.statusesMonitor = new JEFMonInstance(this.monitorConfig);
         
     }
 
@@ -105,7 +105,7 @@ public class JEFMonApplication extends WebApplication {
 ////        return JEFMonUtil.createJobSuites(monitorConfig);
 //    }
 
-    public JobSuitesStatusesMonitor getJobSuitesStatusesMonitor() {
+    public JEFMonInstance getJobSuitesStatusesMonitor() {
         return statusesMonitor;
     }
 

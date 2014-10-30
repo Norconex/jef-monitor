@@ -88,17 +88,17 @@ public abstract class InstancesPanel extends JEFMonPanel {
         add(addButton);
     }
 
-    private DataView<JEFMonInstance> createDataView() {
-        ListDataProvider<JEFMonInstance> dataProvider =
-                new ListDataProvider<JEFMonInstance>(
+    private DataView<InstanceSummary> createDataView() {
+        ListDataProvider<InstanceSummary> dataProvider =
+                new ListDataProvider<InstanceSummary>(
                         InstancesManager.loadInstances());
-        DataView<JEFMonInstance> dataView = 
-                new DataView<JEFMonInstance>("instances", dataProvider) {
+        DataView<InstanceSummary> dataView = 
+                new DataView<InstanceSummary>("instances", dataProvider) {
             private static final long serialVersionUID =
                     4462642058300231730L;
             @Override
-            public void populateItem(final Item<JEFMonInstance> item) {
-                final JEFMonInstance instance = item.getModelObject();
+            public void populateItem(final Item<InstanceSummary> item) {
+                final InstanceSummary instance = item.getModelObject();
                 Label nameLabel = new Label("name", instance.getName());
                 if (instance.isInvalid()) {
                     nameLabel.add(new CssStyle("font-weight: bold;"));
@@ -138,10 +138,10 @@ public abstract class InstancesPanel extends JEFMonPanel {
                 item.add(removeButton);
             }
             @Override
-            protected Item<JEFMonInstance> newItem(String id, int index,
-                    final IModel<JEFMonInstance> model) {
-                Item<JEFMonInstance> row = super.newItem(id, index, model);
-                JEFMonInstance instance = model.getObject();
+            protected Item<InstanceSummary> newItem(String id, int index,
+                    final IModel<InstanceSummary> model) {
+                Item<InstanceSummary> row = super.newItem(id, index, model);
+                InstanceSummary instance = model.getObject();
                 if (instance.isInvalid()) {
                     row.add(new CssClass("danger"));
                     row.add(new CssStyle("cursor: default;"));
@@ -165,10 +165,10 @@ public abstract class InstancesPanel extends JEFMonPanel {
     }
 
     protected abstract void onInstanceClick(
-            AjaxRequestTarget target, JEFMonInstance instance);
+            AjaxRequestTarget target, InstanceSummary instance);
 
     private ListView<JobState> createJobStateListView(
-            final JEFMonInstance instance) {
+            final InstanceSummary instance) {
         return new ListView<JobState>("statuses", Arrays.asList(STATUSES)) {
             private static final long serialVersionUID = -716585245859081922L;
             @Override

@@ -11,20 +11,20 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import com.norconex.jef4.status.JobSuiteStatusSnapshot;
-import com.norconex.jefmon.instance.JobSuitesStatusesMonitor;
+import com.norconex.jefmon.instance.JEFMonInstance;
 
 public class JobTreeProvider 
         implements ISortableTreeProvider<JobStatusTreeNode, Void> {
 
     private static final long serialVersionUID = -7140490848913529419L;
 
-    private final JobSuitesStatusesMonitor statusesMonitor;
+    private final JEFMonInstance instance;
 
 //    private transient List<IJobAction> jobActions;
 
-    public JobTreeProvider(final JobSuitesStatusesMonitor statusesMonitor) {
+    public JobTreeProvider(final JEFMonInstance instance) {
         super();
-        this.statusesMonitor = statusesMonitor;
+        this.instance = instance;
     }
 
     @Override
@@ -42,12 +42,13 @@ public class JobTreeProvider
     public Iterator<? extends JobStatusTreeNode> getRoots() {
         List<JobStatusTreeNode> roots = new ArrayList<JobStatusTreeNode>();
         Collection<JobSuiteStatusSnapshot> suitesStatuses =
-                statusesMonitor.getJobSuitesStatuses();
+                instance.getJobSuitesStatuses();
 //        List< JobSuite> suites = getJobSuites();
 //        List<JobSuite> suites = JEFMonApplication.get().getJobSuites();
         for (JobSuiteStatusSnapshot suiteStatuses : suitesStatuses) {
             roots.add(new JobStatusTreeNode(
-                    suiteStatuses.getRoot(), suiteStatuses, true));
+                    instance, suiteStatuses.getRoot().getJobId(), 
+                    suiteStatuses.getRoot().getJobId(), true));
         }
 //        if (suites != null) {
 //            for (JobSuite suite : suites) {

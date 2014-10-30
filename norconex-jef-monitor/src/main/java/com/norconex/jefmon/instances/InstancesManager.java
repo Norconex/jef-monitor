@@ -29,7 +29,7 @@ import com.norconex.jef4.status.JobState;
 import com.norconex.jef4.status.JobSuiteStatusSnapshot;
 import com.norconex.jefmon.JEFMonApplication;
 import com.norconex.jefmon.JEFMonConfig;
-import com.norconex.jefmon.instance.JobSuitesStatusesMonitor;
+import com.norconex.jefmon.instance.JEFMonInstance;
 import com.norconex.jefmon.model.ConfigurationDAO;
 
 public final class InstancesManager extends WicketClass 
@@ -71,9 +71,9 @@ public final class InstancesManager extends WicketClass
         }
     }
 
-    public static List<JEFMonInstance> loadInstances() {
+    public static List<InstanceSummary> loadInstances() {
 
-        List<JEFMonInstance> freshInstances = new ArrayList<JEFMonInstance>();
+        List<InstanceSummary> freshInstances = new ArrayList<InstanceSummary>();
         freshInstances.add(createThisJefMonInstance());
 
         JEFMonConfig cfg = JEFMonApplication.get().getConfig();
@@ -85,7 +85,7 @@ public final class InstancesManager extends WicketClass
         HttpClient httpclient = HttpClientBuilder.create().build();
         
         for (String url : remoteUrls) {
-            JEFMonInstance instance = fetchJEFMonInstance(httpclient, url);
+            InstanceSummary instance = fetchJEFMonInstance(httpclient, url);
             if (instance != null) {
                 freshInstances.add(instance);
             }
@@ -94,11 +94,11 @@ public final class InstancesManager extends WicketClass
         return freshInstances;
     }
 
-    public static JEFMonInstance createThisJefMonInstance() {
+    public static InstanceSummary createThisJefMonInstance() {
         JEFMonConfig config = JEFMonApplication.get().getConfig();
-        JobSuitesStatusesMonitor suitesStatusesMonitor = 
+        JEFMonInstance suitesStatusesMonitor = 
                 JEFMonApplication.get().getJobSuitesStatusesMonitor();
-        JEFMonInstance thisInstance = new JEFMonInstance(null);
+        InstanceSummary thisInstance = new InstanceSummary(null);
         thisInstance.setName(config.getInstanceName());
         Collection<JobSuiteStatusSnapshot> suitesStatuses = 
                 suitesStatusesMonitor.getJobSuitesStatuses();
@@ -121,7 +121,7 @@ public final class InstancesManager extends WicketClass
         return JEFMonApplication.get().getConfig();
     }
 
-    private static JEFMonInstance fetchJEFMonInstance(
+    private static InstanceSummary fetchJEFMonInstance(
             HttpClient httpClient, final String url) {
         StringBuilder fullURL = new StringBuilder(url);
         if (!url.endsWith("/")) {
@@ -129,7 +129,7 @@ public final class InstancesManager extends WicketClass
         }
         fullURL.append("/suites/json");
         InputStream instream = null;
-        JEFMonInstance instance = new JEFMonInstance(url);
+        InstanceSummary instance = new InstanceSummary(url);
         try {
             HttpGet httpget = new HttpGet(fullURL.toString());
             HttpResponse response = httpClient.execute(httpget);
