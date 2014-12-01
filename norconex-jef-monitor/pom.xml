@@ -10,7 +10,7 @@
 
     <properties>
         <jetty.version>9.1.5.v20140505</jetty.version>
-        <wicket.version>6.16.0</wicket.version>
+        <wicket.version>6.18.0</wicket.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

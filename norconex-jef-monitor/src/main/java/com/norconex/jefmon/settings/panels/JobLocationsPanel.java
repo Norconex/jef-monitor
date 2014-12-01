@@ -46,9 +46,9 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         super(id, dirtyConfig);
         setOutputMarkupId(true);
 
-        if (dirtyConfig.getMonitoredPaths() != null)
-        locations.addAll(Arrays.asList(dirtyConfig.getMonitoredPaths()));
-        
+        if (dirtyConfig.getMonitoredPaths() != null) {
+            locations.addAll(Arrays.asList(dirtyConfig.getMonitoredPaths()));
+        }
         formWrapper.setOutputMarkupId(true);
         add(formWrapper);
         
