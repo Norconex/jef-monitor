@@ -94,7 +94,7 @@ public class JEFMonInstance implements Serializable {
             running = true;
             stopme = false;
             while (!stopme) {
-                syncIndexFiles();
+                if (cfg.getMonitoredPaths() != null) syncIndexFiles();
                 Sleeper.sleepMillis(interval);
             }
             running = false;
