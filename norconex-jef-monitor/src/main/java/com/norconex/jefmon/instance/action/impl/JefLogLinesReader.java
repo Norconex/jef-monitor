@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon.instance.action.impl;
 
 import java.io.File;
@@ -16,24 +30,12 @@ import com.norconex.jefmon.instance.tree.JobStatusTreeNode;
 public class JefLogLinesReader extends LinesReader {
 
     private static final long serialVersionUID = 818718054537660673L;
-//    private final ILogManager logManager;
-//    private final String namespace;
-//    private final String jobId;
     private final JobStatusTreeNode jobStatus;
     private final boolean filterOnJob;
     
-//    public JefLogLinesReader(
-//            ILogManager logManager, String namespace, String jobId) {
-//        this.logManager = logManager;
-//        this.jobId = jobId;
-//        this.namespace = namespace;
-//    }
     public JefLogLinesReader(JobStatusTreeNode jobStatus, boolean filterOnJob) {
         this.jobStatus = jobStatus;
         this.filterOnJob = filterOnJob;
-//        this.logManager = logManager;
-//        this.jobId = jobId;
-//        this.namespace = namespace;
     }
 
     
@@ -73,7 +75,6 @@ public class JefLogLinesReader extends LinesReader {
             if (filterOnJob) {
                 return line.matches(".*?\\[" 
                         + Pattern.quote(jobStatus.getJobId()) + "\\].*? - .*$");
-//                return line.startsWith(jobStatus.getJobId() + ":");
             }
             return true;
         }

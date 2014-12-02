@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon.model;
 
 import java.io.File;
@@ -34,10 +48,6 @@ public final class ConfigurationDAO {
             LogManager.getLogger(ConfigurationDAO.class);
 
     public static JEFMonConfig loadConfig() {
-//            throws FileNotFoundException,
-//                   ConfigurationException,
-//                   MalformedURLException,
-//                   ClassNotFoundException {
         if (!CONFIG_FILE.exists()) {
             LOG.info("JEF Monitor configuration file not "
                     + "found: \"" + CONFIG_FILE
@@ -71,15 +81,6 @@ public final class ConfigurationDAO {
             throw new JEFMonException(
                     "Cannot load JEF Monitor configuration.", e);
         }
-
-
-//        LOG.debug("Loading ClassPathFiles...");
-//        config.setClasspathFiles(loadClasspath(xml));
-//        LOG.debug("Loading job suites...");
-//        config.setSuiteFactoryConfigs(
-//                loadJobSuites(xml, config.getClassloader()));
-//        LOG.debug("Loading action classes...");
-//        config.setActionClasses(loadJobActions(xml, config.getClassloader()));
         return config;
     }
 
@@ -99,7 +100,6 @@ public final class ConfigurationDAO {
             }
         }
 
-//        TransformerFactory.newInstance().newTransformer(null).t
         OutputStream out = new FileOutputStream(CONFIG_FILE);
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         try {
@@ -127,11 +127,6 @@ public final class ConfigurationDAO {
         } catch (XMLStreamException e) {
             throw new IOException("Cannot save as XML.", e);
         }
-
-        
-//        saveClasspath(out, config.getClasspathFiles());
-//        saveJobSuites(out, config.getSuiteFactoryConfigs());
-//        saveJobActions(out, config.getActionClasses());
         out.close();
     }
 
@@ -210,125 +205,9 @@ public final class ConfigurationDAO {
         return urls.toArray(ArrayUtils.EMPTY_STRING_ARRAY);
     }
 
-//    private static void saveClasspath(
-//            PrintWriter out, File[] classpathFiles) {
-//        if (classpathFiles == null) {
-//            return;
-//        }
-//        out.println("  <classpath>");
-//        for (File file : classpathFiles) {
-//            out.print("    <path>");
-//            out.print(xmlEsc(file.getAbsolutePath()));
-//            out.println("</path>");
-//        }
-//        out.println("  </classpath>");
-//    }
-//
-//    private static File[] loadClasspath(XMLConfiguration xml) {
-//        List<HierarchicalConfiguration> nodes =
-//                xml.configurationsAt("classpath.path");
-//        List<File> files = new ArrayList<File>();
-//        for (HierarchicalConfiguration node : nodes) {
-//            files.add(new File(node.getString("")));
-//        }
-//        return files.toArray(new File[]{});
-//    }
-//
-//    private static void saveJobSuites(
-//            PrintWriter out, JobSuiteFactoryConfig[] factoryConfigs) {
-//        if (factoryConfigs == null) {
-//            return;
-//        }
-//        out.println("  <job-suites>");
-//        for (int i = 0; i < factoryConfigs.length; i++) {
-//            JobSuiteFactoryConfig factoryConfig = factoryConfigs[i];
-//            out.print("    <suite factory=\"");
-//            out.print(xmlEsc(factoryConfig.getFactoryClass()));
-//            out.println("\">");
-//            Map<String, String> props = factoryConfig.getProperties();
-//            for (String key : props.keySet()) {
-//                String value = props.get(key);
-//                out.print("      <attribute name=\"");
-//                out.print(xmlEsc(key));
-//                out.print("\">");
-//                out.print(xmlEsc(value));
-//                out.println("</attribute>");
-//            }
-//            out.println("    </suite>");
-//        }
-//        out.println("  </job-suites>");
-//    }
-//
-//    private static JobSuiteFactoryConfig[] loadJobSuites(
-//            XMLConfiguration xml, ClassLoader classloader)
-//            throws ClassNotFoundException {
-//        List<HierarchicalConfiguration> nodes =
-//                xml.configurationsAt("job-suites.suite");
-//        if (LOG.isDebugEnabled()) {
-//            if (nodes != null) {
-//                LOG.debug("Found " + nodes.size() + " job suites");
-//            } else {
-//                LOG.debug("Found no job suites");
-//            }
-//        }
-//        List<JobSuiteFactoryConfig> suiteConfigs =
-//                new ArrayList<JobSuiteFactoryConfig>();
-//        for (HierarchicalConfiguration node : nodes) {
-//            String factoryClass = node.getString("[@factory]");
-//            JobSuiteFactoryConfig suiteConfig =
-//                    new JobSuiteFactoryConfig(factoryClass);
-//            Map<String, String> properties = suiteConfig.getProperties();
-//            List<HierarchicalConfiguration> attributes =
-//                    node.configurationsAt("attribute");
-//            for (HierarchicalConfiguration attribute : attributes) {
-//                properties.put(
-//                        attribute.getString("[@name]"),
-//                        attribute.getString(""));
-//            }
-//            suiteConfigs.add(suiteConfig);
-//        }
-//        return suiteConfigs.toArray(new JobSuiteFactoryConfig[]{});
-//    }
-//
-//    private static void saveJobActions(
-//            PrintWriter out, String[] jobActions) {
-//        if (jobActions == null) {
-//            return;
-//        }
-//        out.println("  <job-actions>");
-//        for (int i = 0; i < jobActions.length; i++) {
-//            String action = jobActions[i];
-//            out.print("    <action class=\"");
-//            out.print(xmlEsc(action));
-//            out.println("\"/>");
-//        }
-//        out.println("  </job-actions>");
-//    }
-//
-//    private static String[] loadJobActions(
-//            XMLConfiguration xml, ClassLoader classloader)
-//            throws ClassNotFoundException {
-//        List<HierarchicalConfiguration> nodes =
-//                xml.configurationsAt("job-actions.action");
-//        List<String> actions = new ArrayList<String>();
-//        for (HierarchicalConfiguration node : nodes) {
-//            String actionClass = node.getString("[@class]");
-//            actions.add(actionClass);
-//        }
-//        return actions.toArray(new String[]{});
-//    }
-
     private static int loadDefaultRefreshInterval(XMLConfiguration xml) {
         return xml.getInt("default-refresh-interval", //$NON-NLS-1$
                 JEFMonConfig.DEFAULT_REFRESH_INTERVAL);
     }
 
-
-//
-//    private static String xmlEsc(String value) {
-//        if (value != null) {
-//            return StringEscapeUtils.escapeXml(value);
-//        }
-//        return StringUtils.EMPTY;
-//    }
 }

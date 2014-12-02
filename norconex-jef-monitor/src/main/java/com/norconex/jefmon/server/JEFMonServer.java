@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon.server;
 
 import java.io.File;
@@ -46,13 +60,8 @@ public class JEFMonServer {
             LogManager.getLogger(JEFMonServer.class);
     
     private static final String CONFIG_PROPERTIES = "config/setup.properties";
-//    
-//    private static final String CONFIG_CONTENT_ANALYTICS_VARS = 
-//            "config/variables.xml";
 
-//    private static final String JEFMON_MAPPING = "/jefmon/*";
     private static final String JEFMON_MAPPING = "/*";
-//    private static final String SERVICE_MAPPING = "/index";
     
     private final Server server = new Server();
     private final JEFMonApplication app;
@@ -60,18 +69,14 @@ public class JEFMonServer {
     
     public JEFMonServer(int port, boolean https, Locale[] locales) {
         this.port = port;
-//        this.app = new AnalyticsApplication(config);
-        
         this.app = new JEFMonApplication(
                 ConfigurationDAO.loadConfig(), locales);
         
         initRuntimeConfiguration();
         
         WebAppContext webappContext = buildWebappContext();
-//        ResourceHandler staticHandler = buildStaticResourcesHandler();
         
         HandlerList handlers = new HandlerList();
-//        handlers.setHandlers(new Handler[] { staticHandler, webappContext });
         handlers.setHandlers(new Handler[] { webappContext });
         server.setHandler(handlers);
         
@@ -129,11 +134,6 @@ public class JEFMonServer {
                 JEFMON_MAPPING, 
                 EnumSet.of(DispatcherType.REQUEST));
         
-        // Add Index service
-//        ReportIndexService service = new ReportIndexService();
-//        ServletHolder servletHolder = new ServletHolder(service);
-//        webappContext.addServlet(servletHolder, SERVICE_MAPPING);
-        
         // Add custom error message
         webappContext.setErrorHandler(new ErrorHandler() {
             protected void writeErrorPageBody(
@@ -153,16 +153,6 @@ public class JEFMonServer {
         
         return webappContext;
     }
-    
-//    private ResourceHandler buildStaticResourcesHandler() {
-//        ResourceHandler staticHandler = new ResourceHandler();
-//        URL staticResources = 
-//                JEFMonServer.class.getClassLoader().getResource("static");
-//        staticHandler.setResourceBase(staticResources.toExternalForm());
-//        staticHandler.setWelcomeFiles(new String[] {"index.html"});
-//        staticHandler.setDirectoriesListed(false);
-//        return staticHandler;
-//    }
     
     private void initHttpConnector() {
         ServerConnector connector = new ServerConnector(server);

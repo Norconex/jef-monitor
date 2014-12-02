@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon.instance.tree;
 
 import java.io.Serializable;
@@ -17,12 +31,6 @@ public class JobStatusTreeNode implements IJobStatus, Serializable {
 
     private static final long serialVersionUID = -1114163221300422823L;
 
-    //TODO create a dynamic way to get statuses and snapshots so we can remove
-    //the need for transient
-//    private transient IJobStatus jobStatus;
-//    private transient JobSuiteStatusSnapshot suiteStatusSnapshot;
-    
-    
     private final boolean root;
     private final String uid;
     private final String suiteId;
@@ -30,38 +38,16 @@ public class JobStatusTreeNode implements IJobStatus, Serializable {
     
     private final JEFMonInstance instance;
     
-//    public JobStatusTreeNode(
-//            IJobStatus jobStatus, JobSuiteStatusSnapshot suiteStatuses) {
-//        this(jobStatus, suiteStatuses, false);
-//    }
-//    public JobStatusTreeNode(IJobStatus jobStatus, 
-//            JobSuiteStatusSnapshot suiteStatuses, boolean root) {
-//        super();
-//        this.jobStatus = jobStatus;
-//        this.root = root;
-//        this.suiteStatusSnapshot = suiteStatuses;
-//        this.uid = suiteStatuses.getRoot().getJobId()
-//                + "__" + jobStatus.getJobId();
-//    }
-
-    
     public JobStatusTreeNode(JEFMonInstance instance, String suiteId, 
             String jobId, boolean root) {
         super();
         this.instance = instance;
         this.suiteId = suiteId;
         this.jobId = jobId;
-//        this.jobStatus = jobStatus;
         this.root = root;
-//        this.suiteStatusSnapshot = suiteStatuses;
-        
-//        this.uid = suiteStatuses.getRoot().getJobId()
-//                + "__" + jobStatus.getJobId();
         this.uid = suiteId + "__" + jobId;
     }
 
-    
-    
     public boolean isRoot() {
         return root;
     }
@@ -206,9 +192,4 @@ public class JobStatusTreeNode implements IJobStatus, Serializable {
         }
         return true;
     }
-
-    
-    
-    
-    
 }

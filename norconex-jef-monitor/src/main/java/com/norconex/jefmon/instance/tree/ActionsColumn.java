@@ -1,5 +1,16 @@
-/**
- * 
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.norconex.jefmon.instance.tree;
 
@@ -19,17 +30,13 @@ public class ActionsColumn extends AbstractJefColumn {
 
     private static final long serialVersionUID = 5647374372976301140L;
     
-//    private final JobTreeProvider provider;
-    
     private final WebMarkupContainer dialogWrapper;
     private final String dialogId;
     
     
-    public ActionsColumn(
-            IModel<String> displayModel, WebMarkupContainer dialogWrapper,// JobTreeProvider provider,
-            String dialogId) {
+    public ActionsColumn(IModel<String> displayModel, 
+            WebMarkupContainer dialogWrapper, String dialogId) {
         super(displayModel);
-//        this.provider = provider;
         this.dialogId = dialogId;
         this.dialogWrapper = dialogWrapper;
     }
@@ -44,28 +51,6 @@ public class ActionsColumn extends AbstractJefColumn {
 
         cellItem.add(new ActionsCell(componentId, 
                 dialogWrapper, dialogId, jobStatusTreeNode, actions));
-                
-        
-//        cellItem.add(new ActionsCell( 
-//                componentId, dialogId, jobStatusTreeNode, actions) {
-//            @Override
-//            protected void showActionDialog(AbstractDialog<?> dialog,
-//                    AjaxRequestTarget target) {
-//                ActionsColumn.this.showActionDialog(dialog, target);
-//            }
-//        });
     }
 
-//    protected abstract void showActionDialog(
-//            AbstractDialog<?> dialog, AjaxRequestTarget target);
-    
-//    /**
-//     * @see com.norconex.jef.webmon.wicket.tree.AbstractJEFColumn
-//     *      #newCell(java.lang.String,
-//     *               com.norconex.jef.webmon.model.JobSuiteTreeNode)
-//     */
-//    public Component newCell(String id, final JobStatusTreeNode treenode) {
-//        ActionsPanel actionsPanel = new ActionsPanel(id, treenode/*, modal*/);
-//        return actionsPanel;
-//    }
 }

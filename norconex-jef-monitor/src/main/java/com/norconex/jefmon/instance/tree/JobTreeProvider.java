@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon.instance.tree;
 
 import java.util.ArrayList;
@@ -20,8 +34,6 @@ public class JobTreeProvider
 
     private final JEFMonInstance instance;
 
-//    private transient List<IJobAction> jobActions;
-
     public JobTreeProvider(final JEFMonInstance instance) {
         super();
         this.instance = instance;
@@ -43,18 +55,11 @@ public class JobTreeProvider
         List<JobStatusTreeNode> roots = new ArrayList<JobStatusTreeNode>();
         Collection<JobSuiteStatusSnapshot> suitesStatuses =
                 instance.getJobSuitesStatuses();
-//        List< JobSuite> suites = getJobSuites();
-//        List<JobSuite> suites = JEFMonApplication.get().getJobSuites();
         for (JobSuiteStatusSnapshot suiteStatuses : suitesStatuses) {
             roots.add(new JobStatusTreeNode(
                     instance, suiteStatuses.getRoot().getJobId(), 
                     suiteStatuses.getRoot().getJobId(), true));
         }
-//        if (suites != null) {
-//            for (JobSuite suite : suites) {
-//                roots.add(new JobStatusTreeNode(suite.getRootJob(), suite, true));
-//            }
-//        }
         return roots.iterator();
     }
 
@@ -67,32 +72,6 @@ public class JobTreeProvider
     public IModel<JobStatusTreeNode> model(JobStatusTreeNode jobStatusNode) {
         return new Model<JobStatusTreeNode>(jobStatusNode);
     }
-
-//    public List<IJobAction> getJobActions() {
-//        if (monitorConfig == null) {
-//            return null;
-//        }
-//        if (jobActions != null) {
-//            return jobActions;
-//        }
-//        String[] actionClasses = monitorConfig.getActionClasses();
-//        jobActions = new ArrayList<IJobAction>(actionClasses.length);
-//        for (String actionClass : actionClasses) {
-//            jobActions.add((IJobAction) JEFMonUtil.newInstance(
-//                    monitorConfig.getClassloader(), actionClass));
-//        }
-//        return jobActions;
-//    }
-
-//    private List<JobSuite> getJobSuites() {
-//        if (monitorConfig == null) {
-//            return null;
-//        }
-//        if (jobSuites != null) {
-//            return jobSuites;
-//        }
-//        return JEFMonUtil.createJobSuites(monitorConfig);
-//    }
 
     @Override
     public ISortState<Void> getSortState() {

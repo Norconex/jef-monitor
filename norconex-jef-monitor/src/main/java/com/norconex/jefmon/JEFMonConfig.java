@@ -1,3 +1,17 @@
+/* Copyright 2007-2014 Norconex Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.norconex.jefmon;
 
 import java.io.File;
@@ -11,10 +25,7 @@ public class JEFMonConfig implements Serializable {
 
     private static final long serialVersionUID = -5553575452353106467L;
 
-//    private JobSuiteFactoryConfig[] suiteFactoryConfigs;
     private IJobAction[] jobActions;
-//    private File[] classpathFiles;
-//    private transient ClassLoader classloader;
     private int defaultRefreshInterval = DEFAULT_REFRESH_INTERVAL;
     private String instanceName;
     private String[] remoteInstanceUrls;
@@ -24,26 +35,12 @@ public class JEFMonConfig implements Serializable {
         super();
     }
 
-//    public JobSuiteFactoryConfig[] getSuiteFactoryConfigs() {
-//        return suiteFactoryConfigs;
-//    }
-//    public void setSuiteFactoryConfigs(
-//            JobSuiteFactoryConfig[] suiteFactoryConfigs) {
-//        this.suiteFactoryConfigs = suiteFactoryConfigs;
-//    }
     public IJobAction[] getJobActions() {
         return jobActions;
     }
     public void setJobActions(IJobAction[] actionClasses) {
         this.jobActions = actionClasses;
     }
-//    public File[] getClasspathFiles() {
-//        return classpathFiles;
-//    }
-//    public void setClasspathFiles(File[] classpathFiles) {
-//        this.classpathFiles = classpathFiles;
-//        this.classloader = null;
-//    }
     public String getInstanceName() {
         return instanceName;
     }
@@ -56,32 +53,6 @@ public class JEFMonConfig implements Serializable {
     public void setRemoteInstanceUrls(String[] remoteInstances) {
         this.remoteInstanceUrls = remoteInstances;
     }
-
-    
-    
-    
-//    @SuppressWarnings("nls")
-//    public ClassLoader getClassloader() {
-//        if (classloader == null) {
-//            if (classpathFiles != null) {
-//                URL[] urls = new URL[classpathFiles.length];
-//                for (int i = 0; i < urls.length; i++) {
-//                    try {
-//                        urls[i] = classpathFiles[i].toURI().toURL();
-//                    } catch (MalformedURLException e) {
-//                        throw new WicketRuntimeException(
-//                                "Invalid classpath URL/Location: "
-//                                        + classpathFiles[i]);
-//                    }
-//                }
-//                classloader = new URLClassLoader(
-//                        urls, JEFMonConfig.class.getClassLoader());
-//            } else {
-//                classloader = JEFMonConfig.class.getClassLoader();
-//            }
-//        }
-//        return classloader;
-//    }
 
     public File[] getMonitoredPaths() {
         return monitoredPaths;
@@ -98,11 +69,4 @@ public class JEFMonConfig implements Serializable {
     public void setDefaultRefreshInterval(int defaultRefreshInterval) {
         this.defaultRefreshInterval = defaultRefreshInterval;
     }
-    
-//    public void replaceWith(JEFMonConfig that) {
-//        this.defaultRefreshInterval = that.defaultRefreshInterval;
-//        this.instanceName = that.instanceName;
-//        this.remoteInstanceUrls = that.remoteInstanceUrls;
-//        this.monitoredPaths = that.monitoredPaths;
-//    }
 }
