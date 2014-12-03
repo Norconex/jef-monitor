@@ -1,3 +1,16 @@
-Execute the com.norconex.jefmon.server.JEFMonServer class and 
-open your browser at localhost and the port specified under 
+Command line:
+-------------
+cd <INSTALL_LOCATION>/scripts/
+jef-monitor[.sh|.bat]
+
+
+You favorite IDE:
+-----------------
+Copy the src/main/assembly/config folder to the project root folder.
+Execute the com.norconex.jefmon.server.JEFMonServer class.
+
+
+Then:
+-----
+Open your browser at localhost and the port specified under 
 /config/setup.properties

@@ -60,7 +60,8 @@ public class JefLogLinesReader extends LinesReader {
         }
         if (LinesReader.STYLE_COMPACT.equalsIgnoreCase(getLineStye())) {
             for (int i = 0; i < lines.length; i++) {
-                lines[i] = lines[i].replaceFirst(".*?\\[.*?\\].*? - ", "");
+                lines[i] = lines[i].replaceFirst(
+                        ".*? \\d\\d:\\d\\d:\\d\\d (\\w+ - )", "$1");
             }
         }
         return lines;
@@ -73,8 +74,8 @@ public class JefLogLinesReader extends LinesReader {
         @Override
         public boolean accept(String line) {
             if (filterOnJob) {
-                return line.matches(".*?\\[" 
-                        + Pattern.quote(jobStatus.getJobId()) + "\\].*? - .*$");
+                return line.matches(
+                        Pattern.quote(jobStatus.getJobId()) + ": .*? - .*$");
             }
             return true;
         }

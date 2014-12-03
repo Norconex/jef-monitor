@@ -13,16 +13,3 @@
 
 * Add start/stop action, enabled with sample jar jobs.
 
-Acknowledgements:
-==================
-
-Icons:
-
-[Tango Library](http://tango.freedesktop.org/Tango_Desktop_Project) - Public Domain
-   - home.png
-   - root.png (derived from home)
-
-
-[FamFamFam](http://www.famfamfam.com/lab/icons/) - Mini contains 144 icons "available for
-   - jar.png
-   - folder.png
