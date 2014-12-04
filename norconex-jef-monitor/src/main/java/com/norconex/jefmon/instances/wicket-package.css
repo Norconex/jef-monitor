@@ -35,6 +35,17 @@ td.nx-jef-instances-remove i {
   xmargin-top: -1px;
 }
 
+.nx-jef-status-error {
+  color: #CC0000;
+}
+.nx-jef-status-ok {
+  color: #009900;
+}
+.nx-jef-status-running {
+  color: #428BCA;
+}
+
+
 /*
 
 table.nx-jef-instances {

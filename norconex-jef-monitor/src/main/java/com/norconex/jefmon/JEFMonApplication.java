@@ -27,16 +27,12 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
-import org.apache.wicket.request.resource.PackageResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.request.resource.SharedResourceReference;
 
 import com.norconex.commons.lang.ClassFinder;
 import com.norconex.jefmon.home.HomePage;
 import com.norconex.jefmon.instance.InstancePage;
 import com.norconex.jefmon.instance.JEFMonInstance;
 import com.norconex.jefmon.instance.action.IJobAction;
-import com.norconex.jefmon.markup.html.image.JEFImages;
 import com.norconex.jefmon.settings.initial.InitialSetupPage;
 import com.norconex.jefmon.settings.update.SettingsPage;
 import com.norconex.jefmon.ws.JobSuiteProgressJsonPage;
@@ -123,10 +119,10 @@ public class JEFMonApplication extends WebApplication {
         mountPage("jobs", InstancePage.class);
 
         //Mount shared resources
-        mountJEFImagesRef(JEFImages.REF_JOB_BLANK);
-        mountJEFImagesRef(JEFImages.REF_JOB_ERROR);
-        mountJEFImagesRef(JEFImages.REF_JOB_OK);
-        mountJEFImagesRef(JEFImages.REF_JOB_RUNNING);
+//        mountJEFImagesRef(JEFImages.REF_JOB_BLANK);
+//        mountJEFImagesRef(JEFImages.REF_JOB_ERROR);
+//        mountJEFImagesRef(JEFImages.REF_JOB_OK);
+//        mountJEFImagesRef(JEFImages.REF_JOB_RUNNING);
         
         
         getMarkupSettings().setStripWicketTags(true);
@@ -135,14 +131,14 @@ public class JEFMonApplication extends WebApplication {
 
     }
 
-    private void mountJEFImagesRef(ResourceReference ref) {
-        String fullName = ref.getName();
-        String fileName = StringUtils.substringAfterLast(fullName, "/");
-        
-        getSharedResources().add(fullName, new PackageResourceReference(
-                JEFImages.class, fileName).getResource());
-        mountResource(fullName, new SharedResourceReference(fullName));
-    }
+//    private void mountJEFImagesRef(ResourceReference ref) {
+//        String fullName = ref.getName();
+//        String fileName = StringUtils.substringAfterLast(fullName, "/");
+//        
+//        getSharedResources().add(fullName, new PackageResourceReference(
+//                JEFImages.class, fileName).getResource());
+//        mountResource(fullName, new SharedResourceReference(fullName));
+//    }
     
     private void initJobActions() {
         List<String> classes = ClassFinder.findSubTypes(IJobAction.class);

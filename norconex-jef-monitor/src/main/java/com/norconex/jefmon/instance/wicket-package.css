@@ -59,36 +59,36 @@
   display: block;
   margin-top: 0px;f
 }
-
 .jef-tree-job-stop,
 .jef-tree-job-blank,
 .jef-tree-job-aborted,
 .jef-tree-job-premature,
 .jef-tree-job-ok,
 .jef-tree-job-running {
-  background-repeat:no-repeat;
-  padding-left: 16px;
-  background-position: 0px 50%;
+
 }
 .jef-tree-job-running {
-  background-image:url('/images/job-running.gif');
+  font-size: 16px;
+  color: #428BCA;
 }
 .jef-tree-job-ok {
-  background-image:url('/images/job-ok.gif');
+  font-size: 16px;
+  color: #009900;
 }
 .jef-tree-job-blank {
-  background-image:url('/images/job-blank.png');
 }
 .jef-tree-job-premature {
-  background-image:url('/images/job-error.gif');
+  font-size: 16px;
+  color: #CC0000;
 }
 .jef-tree-job-aborted {
-  background-image:url('/images/job-error.gif');
+  font-size: 16px;
+  color: #CC0000;
 }
 .jef-tree-job-stop {
-  background-image:url('/images/job-error.gif');
+  font-size: 16px;
+  color: #CC0000;
 }
-
 /*
 .jef-tree-progress {
   width: 110px;
@@ -188,106 +188,3 @@ tree-branch tree-branch-mid
   margin-top: -1px;
 }
 
-
-/*
-
-.jef-tree-tooltip td {
-  padding-bottom: 5px;
-}
-.jef-tree-tooltip h3 {
-  padding: 0px;
-  margin: 0px 0px 0px 0px;
-  xxwidth: 600px;
-}
-.jef-tree-tooltip td.label {
-  text-align: right;
-  padding: 3px 5px 0px 0px;
-  XXfont-size: 10px;
-  font-weight: bold;
-  vertical-align: top;
-}
-.jef-tree-tooltip td.value {
-  XXfont-size: 10px;
-  vertical-align: top;
-}
-
-.jef-tree div.tree-node span {
-  font-style: normal;
-  color: #666666;
-}
-.jef-tree div.tree-node em span {
-  font-style: normal;
-  color: black;
-}
-.jef-tree table {
-  width: 100%;
-  xxborder: 1px solid #DDDDDD;
-  border-collapse: collapse;
-}
-.jef-tree tr.even {
-  background-color: #FFFFFF;
-}
-.jef-tree tr.odd {
-  xxbackground-color: #EEEEEE;
-  background-color: #fbf6f6;
-}
-.jef-tree th {
-  text-align: left;
-  padding: 0px 5px 0px 3px;
-  border-bottom: 1px solid #ccc;
-  xxborder-bottom: 1px solid #CA8327;
-  padding-top: 5px;
-  xxbackground-color: #CA8327;
-  xxbackground-color: #F08000;
-  xxcolor: #CA8327;
-
-  xxborder: 1px solid #eeeeee;
-  xxbackground-color: #CA8327;
-  xxbackground-color: #F08000;
-  xxcolor: #eeeeee;
-}
-.jef-tree th.jef-tree-progress {
-  text-align: center;
-}
-.jef-tree td {
-  XXfont-size: 10px;
-  border: 0px solid #eeeeee;
-  padding: 0px 5px 0px 3px;
-}
-.jef-tree tbody tr:hover {
-  background-color: #e0cfc2;
-  cursor: default;
-}
-.jef-tree td.number {
-    text-align: right;
-    padding-right: 1em;
-}
-.jef-tree td div {
-    height: 18px;
-    vertical-align: bottom;
-}
-.jef-tree .jef-tree-junction-label {
-    XXfont-size: 10px;
-}
-.jef-tree .actionIcon {
-    height: 16px;
-    width: 16px;
-    border: 0px;
-    border-image-width: 0px;
-}
-.jef-tree span.tree-junction {
-    height: 16px;
-}
-.nx-jef-tree-outline {
-    XXfont-size: larger;
-    margin: 0px 0px 0px 0px;
-    padding: 0px;
-    xxmargin-top: 50px;
-    xxwidth: 50em;
-    xxborder: 1px solid #ccc;
-    xxborder-radius: 7px;
-    xpadding:5px;
-    xxtext-align: justify;
-    xxwidth: 99%;
-}
-*/

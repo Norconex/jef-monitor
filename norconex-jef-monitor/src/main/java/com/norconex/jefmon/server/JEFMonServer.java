@@ -55,7 +55,6 @@ import com.norconex.jefmon.model.ConfigurationDAO;
 @SuppressWarnings("nls")
 public class JEFMonServer {
     
-    @SuppressWarnings("unused")
     private static final Logger LOG =
             LogManager.getLogger(JEFMonServer.class);
     
@@ -181,11 +180,13 @@ public class JEFMonServer {
     
     public void run() throws Exception {
         server.start();
+        LOG.info("JEF Monitor server started.");
         server.join();
     }
     
     public void stop() throws Exception {
         server.stop();
+        LOG.info("JEF Monitor server stopped.");
         server.join();
     }
 

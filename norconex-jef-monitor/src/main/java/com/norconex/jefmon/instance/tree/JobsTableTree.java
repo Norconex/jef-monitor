@@ -87,36 +87,38 @@ public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
     @Override
     protected Component newContentComponent(String id,
             IModel<JobStatusTreeNode> model) {
-        return new Folder<JobStatusTreeNode>(id, this, model) {
-            private static final long serialVersionUID = 77423020059851645L;
-            @Override
-            protected IModel<?> newLabelModel(IModel<JobStatusTreeNode> model) {
-                return new Model<String>(model.getObject().getJobId());
-            }
-            
-            protected String getStyleClass() {
-                JobStatusTreeNode job = getModelObject();
-                JobState state = job.getState();
-                if (state == null) {
-                    return "jef-tree-job-blank";
-                }
-                switch (state) {
-                case RUNNING:
-                    return "jef-tree-job-running";
-                case COMPLETED:
-                    return "jef-tree-job-ok";
-                case PREMATURE_TERMINATION:
-                    return "jef-tree-job-premature";
-                case ABORTED:
-                    return "jef-tree-job-aborted";
-                case STOPPED:
-                case STOPPING:
-                    return "jef-tree-job-stop";
-                default:
-                    return "jef-tree-job-blank";
-                }
-            }
-        };
+        return new JEFFolder(id, this, model);
+//        return new Folder<JobStatusTreeNode>(id, this, model) {
+//            private static final long serialVersionUID = 77423020059851645L;
+//            @Override
+//            protected IModel<?> newLabelModel(IModel<JobStatusTreeNode> model) {
+//                return new Model<String>(model.getObject().getJobId());
+//            }
+//            
+//            protected String getStyleClass() {
+//                JobStatusTreeNode job = getModelObject();
+//                JobState state = job.getState();
+//                if (state == null) {
+//                    return "jef-tree-job-blank";
+//                }
+//                switch (state) {
+//                case RUNNING:
+//                    return "jef-tree-job-running";
+//                case COMPLETED:
+//                    //return "fa fa-cog fa-spin";
+//                    return "jef-tree-job-ok";
+//                case PREMATURE_TERMINATION:
+//                    return "jef-tree-job-premature";
+//                case ABORTED:
+//                    return "jef-tree-job-aborted";
+//                case STOPPED:
+//                case STOPPING:
+//                    return "jef-tree-job-stop";
+//                default:
+//                    return "jef-tree-job-blank";
+//                }
+//            }
+//        };
     }
 
     private static List<IColumn<JobStatusTreeNode, Void>> createColumns(

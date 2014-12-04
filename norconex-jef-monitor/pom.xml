@@ -140,9 +140,25 @@
         <outputDirectory>${basedir}/target/classes</outputDirectory>
         <resources>
             <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/about.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/about.properties</exclude>
+                </excludes>
+            </resource>
+            <!-- 
+            <resource>
                 <filtering>false</filtering>
                 <directory>src/main/resources</directory>
             </resource>
+             -->
             <resource>
                 <filtering>false</filtering>
                 <directory>src/main/java</directory>

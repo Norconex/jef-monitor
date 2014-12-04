@@ -23,7 +23,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.repeater.Item;
@@ -31,7 +30,6 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.time.Duration;
 
 import com.norconex.commons.wicket.behaviors.CssClass;
@@ -39,10 +37,8 @@ import com.norconex.commons.wicket.behaviors.CssStyle;
 import com.norconex.commons.wicket.behaviors.OnClickBehavior;
 import com.norconex.commons.wicket.bootstrap.modal.BootstrapModalLauncher;
 import com.norconex.commons.wicket.bootstrap.tooltip.BootstrapTooltip;
-import com.norconex.commons.wicket.markup.html.image.CacheableImage;
 import com.norconex.jef4.status.JobState;
 import com.norconex.jefmon.JEFMonPanel;
-import com.norconex.jefmon.markup.html.image.JEFImages;
 
 public abstract class InstancesPanel extends JEFMonPanel {
 
@@ -192,32 +188,34 @@ public abstract class InstancesPanel extends JEFMonPanel {
                 if (count == null) {
                     count = new MutableInt(0);
                 }
-                ResourceReference imgRef;
+                String css = "";
                 if (instance.isInvalid()) {
-                    imgRef = JEFImages.REF_JOB_ERROR;
+                    css = "fa fa-exclamation-circle nx-jef-status-error";
                 } else if (status == null || count.getValue() == 0) {
-                    imgRef = JEFImages.REF_JOB_BLANK;
+                    css = "jef-tree-job-blank";
                 } else {
                     switch (status) {
                     case COMPLETED:
-                        imgRef = JEFImages.REF_JOB_OK;
+                        css = "fa fa-check-circle nx-jef-status-ok";
                         break;
                     case RUNNING:
-                        imgRef = JEFImages.REF_JOB_RUNNING;
+                        css = "fa fa-spinner fa-spin nx-jef-status-running";
                         break;
                     default:
-                        imgRef = JEFImages.REF_JOB_ERROR;
+                        css = "fa fa-exclamation-circle nx-jef-status-error";
                         break;
                     }
                 }
-                Image image = new CacheableImage("statusIcon", imgRef);
+
+                Label icon = new Label("statusIcon");
+                icon.add(new CssClass(css));
                 String countLabel = count.toString();
                 if (instance.isInvalid()) {
-                    image.setVisible(false);
+                    icon.setVisible(false);
                     countLabel = StringUtils.EMPTY;
                 }
                 item.add(new Label("statusCount", countLabel));
-                item.add(image);
+                item.add(icon);
             }
         };
     }
