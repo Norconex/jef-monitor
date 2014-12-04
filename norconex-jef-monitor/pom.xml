@@ -32,43 +32,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>apache.snapshots</id>
-            <url>https://repository.apache.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>norconex-release-repo</id>
-            <url>http://norconex.s3.amazonaws.com/repo/release</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>norconex-snapshot-repo</id>
-            <url>http://norconex.s3.amazonaws.com/repo/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
 
     <dependencies>
 
@@ -197,7 +166,18 @@
                 </excludes>
             </testResource>
         </testResources>
-        
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>1.0</version>
+      </extension>
+      <extension>  
+        <groupId>org.springframework.build.aws</groupId>  
+        <artifactId>org.springframework.build.aws.maven</artifactId>  
+        <version>3.0.0.RELEASE</version>  
+      </extension>  
+    </extensions>
     <pluginManagement>
         <plugins>
             <plugin>
@@ -387,7 +367,7 @@
   <distributionManagement>
     <site>
       <id>norconex-site-deployment</id>
-      <url>${site.baseurl}/collector-http/latest</url>
+      <url>${site.baseurl}/monitor/latest</url>
     </site>
     <snapshotRepository>
       <id>ossrh</id>
@@ -425,7 +405,7 @@
           <header><![CDATA[
             <style>div.aboutLanguage .siteLink {font-size: 2em;}</style>
             <span class="siteLink">
-              <a href="http://www.norconex.com/collectors/collector-http">Norconex HTTP Collector</a>
+              <a href="http://www.norconex.com/jef/monitor">Norconex JEF Monitor</a>
             </span>
             ]]>
           </header>
@@ -441,7 +421,7 @@
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
               })();
             </script>
-            <a style="font-size: 1.4em;" href="https://github.com/norconex/collector-http/issues">Submit an Issue</a>
+            <a style="font-size: 1.4em;" href="https://github.com/norconex/jef-monitor/issues">Submit an Issue</a>
             &nbsp;&nbsp;|&nbsp;&nbsp; 
             <a style="font-size: 1.4em;" href="http://www.norconex.com">www.norconex.com</a>
             ]]>
