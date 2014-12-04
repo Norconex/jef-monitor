@@ -23,15 +23,12 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.extensions.markup.html.repeater.tree.DefaultTableTree;
 import org.apache.wicket.extensions.markup.html.repeater.tree.Node;
-import org.apache.wicket.extensions.markup.html.repeater.tree.content.Folder;
 import org.apache.wicket.extensions.markup.html.repeater.tree.table.TreeColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 
 import com.norconex.commons.wicket.behaviors.CssClass;
-import com.norconex.jef4.status.JobState;
 import com.norconex.jefmon.instance.InstancePanel;
 
 public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
