@@ -128,8 +128,6 @@ public class JEFMonServer {
         FilterHolder filterHolder = new FilterHolder(filter);
         filterHolder.setInitParameter(
                 WicketFilter.FILTER_MAPPING_PARAM, JEFMON_MAPPING);
-        filterHolder.setInitParameter("encoding", "UTF-8");
-        filterHolder.setInitParameter("forceEncoding", "true");
         webappContext.addFilter(
                 filterHolder, 
                 JEFMON_MAPPING, 
