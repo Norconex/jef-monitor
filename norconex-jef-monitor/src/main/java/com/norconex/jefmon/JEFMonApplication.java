@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
@@ -27,6 +28,7 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
+import org.apache.wicket.util.lang.Objects;
 
 import com.norconex.commons.lang.ClassFinder;
 import com.norconex.jefmon.home.HomePage;
@@ -109,6 +111,14 @@ public class JEFMonApplication extends WebApplication {
     @Override
     protected void init() {
 
+        String enc = getRequestCycleSettings().getResponseRequestEncoding();
+        if (!Objects.equal(enc, CharEncoding.UTF_8)) {
+            LOG.info("Response/Request encoding detected was \"" + enc
+                    + "\".  Switching to UTF-8");
+            getRequestCycleSettings().setResponseRequestEncoding(
+                    CharEncoding.UTF_8);
+        }
+        
         initJobActions();
 
         
