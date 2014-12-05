@@ -8,7 +8,8 @@ You favorite IDE:
 -----------------
 Copy the src/main/assembly/config folder to the project root folder.
 Execute the com.norconex.jefmon.server.JEFMonServer class.
-
+NOTE: Make sure you add the following as JVM arguments before executing:
+    -Dfile.encoding=UTF-8
 
 Then:
 -----
