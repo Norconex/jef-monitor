@@ -117,6 +117,8 @@ public class JEFMonApplication extends WebApplication {
                     + "\".  Switching to UTF-8");
             getRequestCycleSettings().setResponseRequestEncoding(
                     CharEncoding.UTF_8);
+            getMarkupSettings().setDefaultMarkupEncoding(
+                    CharEncoding.UTF_8); 
         }
         
         initJobActions();
