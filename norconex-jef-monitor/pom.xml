@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.norconex.jef</groupId>
     <artifactId>norconex-jef-monitor</artifactId>
-    <version>4.0.1</version>
+    <version>4.0.2-SNAPSHOT</version>
     <name>Norconex JEF Monitor</name>
     <description>
       JEF Monitor is a standalone web-based application offering a glance view
@@ -35,12 +35,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
+    <licenses>
+      <license>
+        <name>The Apache Software License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      </license>
+    </licenses>
+  
+    <repositories>
+      <repository>
+        <id>sonatype.oss.snapshots</id>
+        <name>Sonatype OSS Snapshot Repository</name>
+        <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        <releases>
+          <enabled>false</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </repository> 
+    </repositories>
 
     <dependencies>
 
@@ -120,12 +134,12 @@
         <dependency>
         	<groupId>com.norconex.jef</groupId>
         	<artifactId>norconex-jef</artifactId>
-        	<version>4.0.2</version>
+        	<version>4.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
         	<groupId>com.norconex.commons</groupId>
         	<artifactId>norconex-commons-wicket</artifactId>
-        	<version>1.0.0</version>
+        	<version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
         	<groupId>org.apache.commons</groupId>

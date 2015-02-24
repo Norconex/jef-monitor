@@ -7,6 +7,16 @@
   </properties>
   <body>
 
+    <release version="4.0.2-SNAPSHOT" date="????-??-??" description="Maintenance release">
+      <action dev="essiembre" type="update">
+        Added Sonatype repository to pom.xml for snapshot releases.
+      </action>
+      <action dev="essiembre" type="update">
+        Upgraded Norconex Commons Wicket to 1.0.1 and 
+        norconex-jef dependency to 4.0.3.
+      </action>
+    </release>
+
     <release version="4.0.1" date="2015-02-04" description="Maintenance release.">
       <action dev="essiembre" type="update">
         Upgraded norconex-jef dependency to 4.0.2
