@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 
@@ -30,15 +29,8 @@ public class ActionsColumn extends AbstractJefColumn {
 
     private static final long serialVersionUID = 5647374372976301140L;
     
-    private final WebMarkupContainer dialogWrapper;
-    private final String dialogId;
-    
-    
-    public ActionsColumn(IModel<String> displayModel, 
-            WebMarkupContainer dialogWrapper, String dialogId) {
+    public ActionsColumn(IModel<String> displayModel) {
         super(displayModel);
-        this.dialogId = dialogId;
-        this.dialogWrapper = dialogWrapper;
     }
 
     @Override
@@ -49,8 +41,7 @@ public class ActionsColumn extends AbstractJefColumn {
         List<IJobAction> actions = Arrays.asList(
                 JEFMonApplication.get().getConfig().getJobActions());
 
-        cellItem.add(new ActionsCell(componentId, 
-                dialogWrapper, dialogId, jobStatusTreeNode, actions));
+        cellItem.add(new ActionsCell(componentId, jobStatusTreeNode, actions));
     }
 
 }

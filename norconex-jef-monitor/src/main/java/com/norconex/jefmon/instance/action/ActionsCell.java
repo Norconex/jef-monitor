@@ -40,8 +40,6 @@ public class ActionsCell extends JEFMonPanel {
     
     @SuppressWarnings("nls")
     public ActionsCell(final String id, 
-            final WebMarkupContainer dialogWrapper,
-            final String dialogId, 
             final JobStatusTreeNode job, final List<IJobAction> actions) {
         super(id);
         
@@ -72,7 +70,6 @@ public class ActionsCell extends JEFMonPanel {
                     popup.setWidth(800);
                     link.setPopupSettings(popup);
                     link.add(new Label("actionIcon").add(new CssClass(icon)));
-//                    link.add(new Title(action.getName()));
                     link.add(new BootstrapTooltip(action.getName()));
                     item.add(link);
                 } else {

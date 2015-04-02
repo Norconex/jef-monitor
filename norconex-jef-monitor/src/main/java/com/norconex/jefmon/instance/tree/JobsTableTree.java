@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Norconex Inc.
+/* Copyright 2007-2015 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,10 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColu
 import org.apache.wicket.extensions.markup.html.repeater.tree.DefaultTableTree;
 import org.apache.wicket.extensions.markup.html.repeater.tree.Node;
 import org.apache.wicket.extensions.markup.html.repeater.tree.table.TreeColumn;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.ResourceModel;
 
 import com.norconex.commons.wicket.behaviors.CssClass;
-import com.norconex.jefmon.instance.InstancePanel;
 
 public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
 
@@ -38,10 +36,8 @@ public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
     public JobsTableTree(String id,
             JobTreeProvider provider,
             int rowsPerPage, 
-            IModel<Set<JobStatusTreeNode>> state,
-            WebMarkupContainer dialogWrapper) {
-        super(id, createColumns(provider, dialogWrapper), 
-                provider, rowsPerPage, state);
+            IModel<Set<JobStatusTreeNode>> state) {
+        super(id, createColumns(), provider, rowsPerPage, state);
     }
 
     @Override
@@ -85,41 +81,9 @@ public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
     protected Component newContentComponent(String id,
             IModel<JobStatusTreeNode> model) {
         return new JEFFolder(id, this, model);
-//        return new Folder<JobStatusTreeNode>(id, this, model) {
-//            private static final long serialVersionUID = 77423020059851645L;
-//            @Override
-//            protected IModel<?> newLabelModel(IModel<JobStatusTreeNode> model) {
-//                return new Model<String>(model.getObject().getJobId());
-//            }
-//            
-//            protected String getStyleClass() {
-//                JobStatusTreeNode job = getModelObject();
-//                JobState state = job.getState();
-//                if (state == null) {
-//                    return "jef-tree-job-blank";
-//                }
-//                switch (state) {
-//                case RUNNING:
-//                    return "jef-tree-job-running";
-//                case COMPLETED:
-//                    //return "fa fa-cog fa-spin";
-//                    return "jef-tree-job-ok";
-//                case PREMATURE_TERMINATION:
-//                    return "jef-tree-job-premature";
-//                case ABORTED:
-//                    return "jef-tree-job-aborted";
-//                case STOPPED:
-//                case STOPPING:
-//                    return "jef-tree-job-stop";
-//                default:
-//                    return "jef-tree-job-blank";
-//                }
-//            }
-//        };
     }
 
-    private static List<IColumn<JobStatusTreeNode, Void>> createColumns(
-            JobTreeProvider provider, WebMarkupContainer dialogWrapper) {
+    private static List<IColumn<JobStatusTreeNode, Void>> createColumns() {
         List<IColumn<JobStatusTreeNode, Void>> columns =
                 new ArrayList<IColumn<JobStatusTreeNode, Void>>();
         columns.add(new TreeColumn<JobStatusTreeNode, Void>(
@@ -132,8 +96,7 @@ public class JobsTableTree extends DefaultTableTree<JobStatusTreeNode, Void>{
         columns.add(new PropertyColumn<JobStatusTreeNode, Void>(
                 new ResourceModel("col.note"), "note"));
 
-        columns.add(new ActionsColumn(new ResourceModel("col.actions"),
-                dialogWrapper, InstancePanel.TREE_DIALOG_ID));
+        columns.add(new ActionsColumn(new ResourceModel("col.actions")));
 
         return columns;
     }

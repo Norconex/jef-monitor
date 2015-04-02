@@ -1,4 +1,4 @@
-/* Copyright 2014 Norconex Inc.
+/* Copyright 2014-2015 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,8 +30,10 @@ import org.apache.wicket.model.Model;
 import com.norconex.jef4.status.JobState;
 
 public class JEFFolder extends Panel {
-    private static final LinkStyleBehavior LINK_STYLE_CLASS = new LinkStyleBehavior();
-    private static final IconStyleBehavior ICON_STYLE_CLASS = new IconStyleBehavior();
+    private static final LinkStyleBehavior LINK_STYLE_CLASS = 
+            new LinkStyleBehavior();
+    private static final IconStyleBehavior ICON_STYLE_CLASS = 
+            new IconStyleBehavior();
 
     private static final long serialVersionUID = 1L;
 
@@ -91,24 +93,6 @@ public class JEFFolder extends Panel {
 
     protected String getLinkStyleClass() {
         return "";
-        // JobStatusTreeNode t = getModelObject();
-        //
-        // String styleClass;
-        // if (tree.getProvider().hasChildren(t)) {
-        // if (tree.getState(t) == State.EXPANDED) {
-        // styleClass = getOpenStyleClass();
-        // } else {
-        // styleClass = getClosedStyleClass();
-        // }
-        // } else {
-        // styleClass = getOtherStyleClass(t);
-        // }
-        //
-        // if (isSelected()) {
-        // styleClass += " " + getSelectedStyleClass();
-        // }
-        //
-        // return styleClass;
     }
 
     protected String getIconStyleClass() {

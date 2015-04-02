@@ -93,7 +93,7 @@ public class JEFMonServer {
      * 
      * The default behavior is to set as RuntimeConfigurationType.DEPLOYMENT 
      */
-    public void initRuntimeConfiguration() {
+    private void initRuntimeConfiguration() {
         
         URL resource = new DefaultClassResolver().
                 getClassLoader().getResource("dev.properties");
@@ -110,8 +110,7 @@ public class JEFMonServer {
                     "wicket." + Application.CONFIGURATION, 
                     RuntimeConfigurationType.DEPLOYMENT.toString());
             app.setConfigurationType(
-                    RuntimeConfigurationType.valueOf(
-                            value.toString().toUpperCase()));
+                    RuntimeConfigurationType.valueOf(value.toUpperCase()));
         } catch (ConfigurationException e) {
             throw new JEFMonException(
                     "Exception while reading dev.propeties.", e);

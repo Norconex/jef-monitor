@@ -33,8 +33,6 @@ public class HomePage extends JEFMonPage {
 
     private static final long serialVersionUID = 6007545512735243708L;
 
-    private String instanceURL;
-
     public HomePage() {
         super();
     }
@@ -57,7 +55,7 @@ public class HomePage extends JEFMonPage {
             @Override
             protected void onInstanceClick(AjaxRequestTarget target,
                     InstanceSummary instance) {
-                instanceURL = instance.getUrl();
+                String instanceURL = instance.getUrl();
                 String pageURL = instanceURL;
                 if (instanceURL == null) {
                     pageURL = "/";

@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Norconex Inc.
+/* Copyright 2007-2015 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -59,7 +60,7 @@ public class JEFMonApplication extends WebApplication {
 
     public JEFMonApplication(JEFMonConfig config, Locale[] supportedLocales) {
         super();
-        this.supportedLocales = supportedLocales;
+        this.supportedLocales = ArrayUtils.clone(supportedLocales);
         if (config == null) {
             this.monitorConfig = new JEFMonConfig();
         } else {
@@ -123,35 +124,16 @@ public class JEFMonApplication extends WebApplication {
         
         initJobActions();
 
-        
-        // mountPage("/initialsetup", InitialSetupPage.class);
         mountPage("settings", SettingsPage.class);
-//        mountPage("jobs/xml", JobProgressXmlPage.class);
         mountPage("suites/json", JobSuiteProgressJsonPage.class);
         mountPage("jobs", InstancePage.class);
 
-        //Mount shared resources
-//        mountJEFImagesRef(JEFImages.REF_JOB_BLANK);
-//        mountJEFImagesRef(JEFImages.REF_JOB_ERROR);
-//        mountJEFImagesRef(JEFImages.REF_JOB_OK);
-//        mountJEFImagesRef(JEFImages.REF_JOB_RUNNING);
-        
-        
         getMarkupSettings().setStripWicketTags(true);
 
         statusesMonitor.startMonitoring();
 
     }
 
-//    private void mountJEFImagesRef(ResourceReference ref) {
-//        String fullName = ref.getName();
-//        String fileName = StringUtils.substringAfterLast(fullName, "/");
-//        
-//        getSharedResources().add(fullName, new PackageResourceReference(
-//                JEFImages.class, fileName).getResource());
-//        mountResource(fullName, new SharedResourceReference(fullName));
-//    }
-    
     private void initJobActions() {
         List<String> classes = ClassFinder.findSubTypes(IJobAction.class);
         for (String className : classes) {

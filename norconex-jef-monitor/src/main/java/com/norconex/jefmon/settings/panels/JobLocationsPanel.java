@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Norconex Inc.
+/* Copyright 2007-2015 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,8 +52,6 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
             new WebMarkupContainer("formWrapper");
     private final List<File> locations = new ArrayList<>();
     private final ListMultipleChoice<File> locationsSelect;
-    private final WebMarkupContainer addFileButton;
-    private final WebMarkupContainer addFolderButton;
     private final WebMarkupContainer removeButton;
     
     public JobLocationsPanel(String id, JEFMonConfig dirtyConfig) {
@@ -104,7 +102,8 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         };
         fileDialog.setSelectionValidator(validationFilter);
         add(fileDialog);
-        addFileButton = new WebMarkupContainer("addFileButton");
+        WebMarkupContainer addFileButton = 
+                new WebMarkupContainer("addFileButton");
         addFileButton.add(new BootstrapModalLauncher(fileDialog));
         formWrapper.add(addFileButton);
 
@@ -120,7 +119,8 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         };
         folderDialog.setSelectionValidator(DirectoryFileFilter.DIRECTORY);
         add(folderDialog);
-        addFolderButton = new WebMarkupContainer("addFolderButton");
+        WebMarkupContainer addFolderButton = 
+                new WebMarkupContainer("addFolderButton");
         addFolderButton.add(new BootstrapModalLauncher(folderDialog));
         formWrapper.add(addFolderButton);
 
@@ -139,7 +139,6 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         locations.removeAll(fileList);
         locations.addAll(fileList);
         locationsSelect.setChoices(locations);
-        //removeButton.setVisible(false);
         target.add(formWrapper);
         adjustButtonVisibility(target);
     }

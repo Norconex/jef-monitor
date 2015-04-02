@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Norconex Inc.
+/* Copyright 2007-2015 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,7 +147,6 @@ public final class InstancesManager extends WicketClass
         try {
             HttpGet httpget = new HttpGet(fullURL.toString());
             HttpResponse response = httpClient.execute(httpget);
-            //int statusCode = response.getStatusLine().getStatusCode();
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 instream = entity.getContent();

@@ -17,6 +17,8 @@ package com.norconex.jefmon;
 import java.io.File;
 import java.io.Serializable;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.norconex.jefmon.instance.action.IJobAction;
 
 public class JEFMonConfig implements Serializable {
@@ -39,7 +41,7 @@ public class JEFMonConfig implements Serializable {
         return jobActions;
     }
     public void setJobActions(IJobAction[] actionClasses) {
-        this.jobActions = actionClasses;
+        this.jobActions = ArrayUtils.clone(actionClasses);
     }
     public String getInstanceName() {
         return instanceName;
@@ -51,7 +53,7 @@ public class JEFMonConfig implements Serializable {
         return remoteInstanceUrls;
     }
     public void setRemoteInstanceUrls(String[] remoteInstances) {
-        this.remoteInstanceUrls = remoteInstances;
+        this.remoteInstanceUrls = ArrayUtils.clone(remoteInstances);
     }
 
     public File[] getMonitoredPaths() {
@@ -59,7 +61,7 @@ public class JEFMonConfig implements Serializable {
     }
 
     public void setMonitoredPaths(File[] monitoredLocations) {
-        this.monitoredPaths = monitoredLocations;
+        this.monitoredPaths = ArrayUtils.clone(monitoredLocations);
     }
 
     public int getDefaultRefreshInterval() {
