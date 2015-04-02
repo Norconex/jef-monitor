@@ -7,13 +7,19 @@
   </properties>
   <body>
 
-    <release version="4.0.2-SNAPSHOT" date="????-??-??" description="Maintenance release">
+    <release version="4.0.2" date="2015-04-2" description="Maintenance release">
       <action dev="essiembre" type="update">
         Added Sonatype repository to pom.xml for snapshot releases.
       </action>
       <action dev="essiembre" type="update">
-        Upgraded Norconex Commons Wicket to 1.0.1 and 
-        norconex-jef dependency to 4.0.3.
+        Updated several maven plugins and added SonarQube maven plugin.
+      </action>
+      <action dev="essiembre" type="update">
+        Library updates: Norconex Commons Wicket 1.0.1, SLF4J 1.7.12,
+        Norconex JEF 4.0.3, Jetty 9.2.10.v20150310, Apache Wicket 6.19.0,
+        JUnit 4.12, Apache Commons Logging 1.1.3, 
+        Apache Commons BeanUtils 1.9.2, Apache Commons Configuration 1.10,
+        Joda-Time 2.7, Apache HttpComponents Client 4.4.1.
       </action>
     </release>
 
