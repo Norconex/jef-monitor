@@ -7,6 +7,12 @@
   </properties>
   <body>
 
+    <release version="4.0.2" date="2015-??-??" description="Maintenance release">
+      <action dev="essiembre" type="update">
+        Maven dependency updates: Norconex JEF 4.0.7.
+      </action>
+    </release>
+
     <release version="4.0.2" date="2015-04-2" description="Maintenance release">
       <action dev="essiembre" type="update">
         Added Sonatype repository to pom.xml for snapshot releases.
