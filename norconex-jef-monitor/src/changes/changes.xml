@@ -7,7 +7,7 @@
   </properties>
   <body>
 
-    <release version="4.0.2" date="2015-??-??" description="Maintenance release">
+    <release version="4.0.3" date="2015-11-02" description="Maintenance release">
       <action dev="essiembre" type="update">
         Maven dependency updates: Norconex JEF 4.0.7.
       </action>
