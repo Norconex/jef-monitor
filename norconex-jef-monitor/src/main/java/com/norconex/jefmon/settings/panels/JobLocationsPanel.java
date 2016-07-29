@@ -25,6 +25,7 @@ import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -164,7 +165,9 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
                     icon = "nx-folder-icon";
                 }
                 buffer.insert(buffer.lastIndexOf("\">") + 1,
-                        " class=\"" + icon + "\"");
+                        " class=\"" + icon + "\" title=\""
+                      + StringEscapeUtils.escapeHtml4(
+                              file.getAbsolutePath()) +  "\"");
             }
         };
         lc.setMaxRows(7);

@@ -180,6 +180,9 @@ public class JEFMonServer {
     public void run() throws Exception {
         server.start();
         LOG.info("JEF Monitor server started.");
+        LOG.info("Visit http://localhost:" + port + " in your browser "
+                + "(replace localhost with actual host/IP if running on "
+                + "a different machine).");
         server.join();
     }
     

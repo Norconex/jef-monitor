@@ -8,6 +8,15 @@
   <body>
 
     <release version="4.0.4-SNAPSHOT" date="2016-??-??" description="Maintenance release">
+      <action dev="essiembre" type="update">
+        Now showing full path to job index files on mouseover in the 
+        "Jobs to monitor" configuration screen to make it possible to view
+        long paths that are otherwise truncated.
+      </action>
+      <action dev="essiembre" type="update">
+        Upon startup, now displays the URL to reach the application 
+        in a browser.
+      </action>
       <action dev="essiembre" type="fix" issue="1">
         Fixed launch shell script when run from script current directory.
       </action>

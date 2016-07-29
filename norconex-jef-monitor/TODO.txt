@@ -1,4 +1,8 @@
 
+* Replace <select multiple> in Job index location wizard to be
+  more like the lists in the Add Actions screen, so that long
+  paths are no longer truncated.
+  
 * Have jef monitor instances refresh their status every X seconds
   in background thread.
 
