@@ -17,6 +17,9 @@
         Upon startup, now displays the URL to reach the application 
         in a browser.
       </action>
+      <action dev="essiembre" type="fix" issue="3">
+        Added missing "keystore" resource for the application to run with https.
+      </action>
       <action dev="essiembre" type="fix" issue="1">
         Fixed launch shell script when run from script current directory.
       </action>

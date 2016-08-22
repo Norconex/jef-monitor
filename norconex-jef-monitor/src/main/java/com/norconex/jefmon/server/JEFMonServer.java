@@ -65,9 +65,11 @@ public class JEFMonServer {
     private final Server server = new Server();
     private final JEFMonApplication app;
     private final int port;
+    private final boolean https;
     
     public JEFMonServer(int port, boolean https, Locale[] locales) {
         this.port = port;
+        this.https = https;
         this.app = new JEFMonApplication(
                 ConfigurationDAO.loadConfig(), locales);
         
@@ -180,7 +182,12 @@ public class JEFMonServer {
     public void run() throws Exception {
         server.start();
         LOG.info("JEF Monitor server started.");
-        LOG.info("Visit http://localhost:" + port + " in your browser "
+        String schema = "http";
+        if (https) {
+            schema += "s";
+        }
+        LOG.info("Visit " + schema + "://localhost:" + port 
+                + " in your browser "
                 + "(replace localhost with actual host/IP if running on "
                 + "a different machine).");
         server.join();
