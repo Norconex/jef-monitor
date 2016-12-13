@@ -7,7 +7,7 @@
   </properties>
   <body>
 
-    <release version="4.0.4-SNAPSHOT" date="2016-??-??" description="Maintenance release">
+    <release version="4.0.4" date="2016-12-13" description="Maintenance release">
       <action dev="essiembre" type="update">
         Now showing full path to job index files on mouseover in the 
         "Jobs to monitor" configuration screen to make it possible to view
