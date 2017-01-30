@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Norconex Inc.
+/* Copyright 2007-2017 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.norconex.jefmon.instances;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -150,7 +151,8 @@ public final class InstancesManager extends WicketClass
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 instream = entity.getContent();
-                String content = IOUtils.toString(instream);
+                String content = IOUtils.toString(
+                        instream, StandardCharsets.UTF_8);
                 JSONObject json = new JSONObject(content);
                 
                 instance.setName(json.getString("name"));

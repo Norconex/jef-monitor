@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Norconex Inc.
+/* Copyright 2007-2017 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.norconex.commons.lang.config.ConfigurationUtil;
 import com.norconex.jefmon.JEFMonConfig;
 import com.norconex.jefmon.JEFMonException;
 import com.norconex.jefmon.instance.action.IJobAction;
@@ -65,7 +64,7 @@ public final class ConfigurationDAO {
         LOG.info("Loading JEF Monitor configuration file: " + CONFIG_FILE);
         try {
             XMLConfiguration xml = new XMLConfiguration(CONFIG_FILE);
-            ConfigurationUtil.disableDelimiterParsing(xml);
+            xml.setDelimiterParsingDisabled(true);
             config.setInstanceName(xml.getString("instance-name", "[?]"));
             
             LOG.debug("Loading remote instances...");

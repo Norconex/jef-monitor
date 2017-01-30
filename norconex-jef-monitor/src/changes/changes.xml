@@ -7,6 +7,17 @@
   </properties>
   <body>
 
+    <release version="4.0.5-SNAPSHOT" date="2017-??-??" description="Maintenance release">
+      <action dev="essiembre" type="update">
+        Maven dependency updates: Norconex JEF 4.1.0.
+      </action>
+      <action dev="essiembre" type="update">
+        Non-job threads will now always return the corresponding job id 
+        when accessing JobSuite#getCurrentJobId() from a job child thread
+        (unless overwritten in the said thread).
+      </action>
+    </release>
+
     <release version="4.0.4" date="2016-12-13" description="Maintenance release">
       <action dev="essiembre" type="update">
         Now showing full path to job index files on mouseover in the 
