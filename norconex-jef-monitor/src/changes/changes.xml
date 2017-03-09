@@ -9,6 +9,20 @@
 
     <release version="4.0.5-SNAPSHOT" date="2017-??-??" description="Maintenance release">
       <action dev="essiembre" type="update">
+        Removed Ajax "Progress" indicator at the top and replaced with an error
+        message when calls to JEF Monitor fails. 
+      </action>
+      <action dev="essiembre" type="update">
+        "Jobs to monitor" configuration panel now uses a text box to 
+        specify .index file locations.
+      </action>
+      <action dev="essiembre" type="update">
+        "Monitored Installations" panel now highlights the selected instance. 
+      </action>
+      <action dev="essiembre" type="update">
+        "Monitored Installations" panel now blue to distinguish better. 
+      </action>
+      <action dev="essiembre" type="update">
         Maven dependency updates: Norconex JEF 4.1.0.
       </action>
       <action dev="essiembre" type="update">

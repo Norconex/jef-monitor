@@ -111,8 +111,9 @@ public class JEFFolder extends Panel {
         case ABORTED:
             return "fa fa-exclamation-circle jef-tree-job-aborted";
         case STOPPED:
+            return "fa fa-square jef-tree-job-stop";
         case STOPPING:
-            return "fa fa-stop jef-tree-job-stop";
+            return "fa fa-square jef-tree-job-stopping";
         default:
             return "jef-tree-job-blank";
         }

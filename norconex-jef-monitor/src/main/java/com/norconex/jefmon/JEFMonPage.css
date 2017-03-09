@@ -58,14 +58,24 @@ a:hover, a:focus {
   font-size: 16px;
   padding: 15px 10px 10px 10px;
   
-  height: 48px;
+  min-height: 48px;
   margin: 0px;
   border: 3px solid white;
   box-shadow: 0px 0px 10px #666666;
+  background-color: #CC0000;
+  min-width: 400px;
+  max-width: 40%;
+  white-space: normal;
+  text-align: center;
 }
+#ajaxveil-inner small {
+  color: white;
+}
+/*
 #ajaxveil img {
   vertical-align: baseline;
 }
+*/
 .norconex-label {
   color: #225e9b;
 }

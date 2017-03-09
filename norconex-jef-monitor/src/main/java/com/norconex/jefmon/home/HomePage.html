@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- 
-   Copyright 2007-2014 Norconex Inc.
+   Copyright 2007-20174 Norconex Inc.
  
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -49,8 +49,9 @@
 
   <div id="ajaxveil">
     <h1 id="ajaxveil-inner" class="label label-primary">
-      <wicket:link><img src="loading.gif"></wicket:link>
-      <wicket:message key="loading">Loading...</wicket:message>
+      <i class="fa fa-exclamation-triangle"></i>
+      <wicket:message key="ajaxError.title">ERROR!</wicket:message><br>
+      <small><wicket:message key="ajaxError.desc">Message</wicket:message></small>
     </h1>
   </div>
 

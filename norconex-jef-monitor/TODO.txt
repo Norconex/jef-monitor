@@ -1,4 +1,15 @@
 
+* Fix this:
+
+ERROR - DefaultExceptionMapper     - Unexpected error occurred
+org.apache.wicket.core.request.handler.ComponentNotFoundException: Component 'treePanel:treeTable:table:body:rows:1:cells:8:cell:actions:0:actionLink' has been removed from page.
+
+
+* Add language toggle?  Have it add a lang param to instance when
+  setting the iframe src URL.
+
+* Add error page on java exception
+
 * Replace <select multiple> in Job index location wizard to be
   more like the lists in the Add Actions screen, so that long
   paths are no longer truncated.
@@ -12,8 +23,6 @@
 
 * Load a sample jar and jobs to have a working sample out of the box.
 
-* Fix classpath dialog title not being updated (when going from Jar to Folder)
-  maybe we need to create a new Dialog every time a button is pressed.
-
-* Add start/stop action, enabled with sample jar jobs.
+* Add start/resume/stop action, when clicked, opens a dialog asking/confirming
+  the external command to launch. Maybe enabled with sample jar jobs.
 

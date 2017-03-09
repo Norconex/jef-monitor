@@ -27,4 +27,7 @@ public interface IJobAction extends Serializable {
     String getFontIcon();
     boolean isVisible(JobStatusTreeNode job);
     Component execute(JobStatusTreeNode job, String componentId);
+    
+    //TODO allow to return a PopupSettings
+    //TODO give option to have it modal
 }

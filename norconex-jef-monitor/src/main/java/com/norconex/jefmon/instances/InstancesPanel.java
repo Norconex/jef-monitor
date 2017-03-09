@@ -15,6 +15,7 @@
 package com.norconex.jefmon.instances;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -49,7 +50,8 @@ public abstract class InstancesPanel extends JEFMonPanel {
             JobState.STOPPED, JobState.STOPPING, JobState.UNKNOWN, };
 
     private WebMarkupContainer instancesTable;
-
+    private String selectedInstanceURL;
+    
     public InstancesPanel(String id) {
         super(id);
     }
@@ -102,8 +104,7 @@ public abstract class InstancesPanel extends JEFMonPanel {
         ListDataProvider<InstanceSummary> dataProvider =
                 new ListDataProvider<InstanceSummary>(
                         InstancesManager.loadInstances());
-        DataView<InstanceSummary> dataView = 
-                new DataView<InstanceSummary>("instances", dataProvider) {
+        return new DataView<InstanceSummary>("instances", dataProvider) {
             private static final long serialVersionUID =
                     4462642058300231730L;
             @Override
@@ -127,9 +128,7 @@ public abstract class InstancesPanel extends JEFMonPanel {
                 } else {
                     totalLabel = Integer.toString(instance.getTotalRoots());
                 }
-                item.add(new Label(
-                        "status-total", totalLabel));
-
+                item.add(new Label("status-total", totalLabel));
 
                 AjaxLink<String> removeButton = new AjaxLink<String>("remove") {
                     private static final long serialVersionUID = 
@@ -152,6 +151,7 @@ public abstract class InstancesPanel extends JEFMonPanel {
                     final IModel<InstanceSummary> model) {
                 Item<InstanceSummary> row = super.newItem(id, index, model);
                 InstanceSummary instance = model.getObject();
+
                 if (instance.isInvalid()) {
                     row.add(new CssClass("danger"));
                     row.add(new CssStyle("cursor: default;"));
@@ -164,14 +164,18 @@ public abstract class InstancesPanel extends JEFMonPanel {
                                 7484946666996050240L;
                         @Override
                         protected void onClick(AjaxRequestTarget target) {
+                            selectedInstanceURL = model.getObject().getUrl();
                             onInstanceClick(target, model.getObject());
+                            target.add(instancesTable);
                         }
                     });
+                    if (Objects.equals(selectedInstanceURL, instance.getUrl())){
+                        row.add(new CssClass("nx-selected-instance text-info"));
+                    }
                 }
                 return row;
             }
         };
-        return dataView;
     }
 
     protected abstract void onInstanceClick(

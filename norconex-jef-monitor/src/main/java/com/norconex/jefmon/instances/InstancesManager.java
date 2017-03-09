@@ -88,7 +88,7 @@ public final class InstancesManager extends WicketClass
 
     public static List<InstanceSummary> loadInstances() {
 
-        List<InstanceSummary> freshInstances = new ArrayList<InstanceSummary>();
+        List<InstanceSummary> freshInstances = new ArrayList<>();
         freshInstances.add(createThisJefMonInstance());
 
         JEFMonConfig cfg = JEFMonApplication.get().getConfig();

@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Norconex Inc.
+/* Copyright 2007-2017 Norconex Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,23 @@
 package com.norconex.jefmon.settings.panels;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.commons.io.filefilter.DirectoryFileFilter;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.OrFileFilter;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.ListMultipleChoice;
-import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.string.AppendingStringBuffer;
 
 import com.norconex.commons.wicket.behaviors.OnClickBehavior;
-import com.norconex.commons.wicket.bootstrap.filesystem.BootstrapFileSystemDialog;
-import com.norconex.commons.wicket.bootstrap.modal.BootstrapModalLauncher;
+import com.norconex.commons.wicket.markup.html.form.UpdatingTextField;
 import com.norconex.jefmon.JEFMonConfig;
 
 /**
@@ -44,7 +39,6 @@ import com.norconex.jefmon.JEFMonConfig;
  * 
  * @author Pascal Essiembre
  */
-@SuppressWarnings("nls")
 public class JobLocationsPanel extends AbstractSettingsPanel {
 
     private static final long serialVersionUID = -6095982251770897729L;
@@ -65,11 +59,27 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         formWrapper.setOutputMarkupId(true);
         add(formWrapper);
         
-        
         // --- Locations Select ---
         locationsSelect = buildLocationsSelect("locations");
         formWrapper.add(locationsSelect);
 
+        // --- Add ---
+        final UpdatingTextField<String> addPathField = 
+                new UpdatingTextField<>("addPath", new Model<String>());
+        formWrapper.add(addPathField);
+        WebMarkupContainer addButton = new WebMarkupContainer("addPathButton");
+        addButton.add(new OnClickBehavior() {
+            private static final long serialVersionUID = 3606300997668625245L;
+            @Override
+            protected void onClick(AjaxRequestTarget target) {
+                String path = addPathField.getModelObject();
+                if (StringUtils.isNotBlank(path)) {
+                    addFileToSelect(target, new File(path));
+                }
+            }
+        });
+        formWrapper.add(addButton);
+        
         // --- Remove ---
         removeButton = new WebMarkupContainer("removeButton");
         removeButton.setOutputMarkupId(true);
@@ -86,47 +96,6 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         });
         removeButton.setVisible(false);
         formWrapper.add(removeButton);
-
-        // --- Add File ---
-        IOFileFilter validationFilter = new SuffixFileFilter(".index");
-        FilenameFilter browseFilter = new OrFileFilter(
-                DirectoryFileFilter.DIRECTORY, validationFilter);
-        BootstrapFileSystemDialog fileDialog = new BootstrapFileSystemDialog(
-                "addFileModal", new ResourceModel("location.dlg.file"), 
-                browseFilter, true) {
-            private static final long serialVersionUID = 831482258795791951L;
-
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, File[] files) {
-                addFileToSelect(target, files);
-            }
-        };
-        fileDialog.setSelectionValidator(validationFilter);
-        add(fileDialog);
-        WebMarkupContainer addFileButton = 
-                new WebMarkupContainer("addFileButton");
-        addFileButton.add(new BootstrapModalLauncher(fileDialog));
-        formWrapper.add(addFileButton);
-
-        // --- Add Folder ---
-        BootstrapFileSystemDialog folderDialog = new BootstrapFileSystemDialog(
-                "addFolderModal", new ResourceModel("location.dlg.dir"), 
-                DirectoryFileFilter.DIRECTORY, true) {
-            private static final long serialVersionUID = -6453512318897096749L;
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, File[] files) {
-                addFileToSelect(target, files);
-            }
-        };
-        folderDialog.setSelectionValidator(DirectoryFileFilter.DIRECTORY);
-        add(folderDialog);
-        WebMarkupContainer addFolderButton = 
-                new WebMarkupContainer("addFolderButton");
-        addFolderButton.add(new BootstrapModalLauncher(folderDialog));
-        formWrapper.add(addFolderButton);
-
-
-    
     }
 
     @Override
@@ -135,7 +104,7 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
         dirtyConfig.setMonitoredPaths(locations.toArray(new File[]{}));
     }
 
-    private void addFileToSelect(AjaxRequestTarget target, File[] files) {
+    private void addFileToSelect(AjaxRequestTarget target, File... files) {
         List<File> fileList = Arrays.asList(files);
         locations.removeAll(fileList);
         locations.addAll(fileList);
@@ -161,12 +130,19 @@ public class JobLocationsPanel extends AbstractSettingsPanel {
                     return;
                 }
                 String icon = "nx-file-icon";
-                if (file.isDirectory()) {
+                String notFoundTitle = "";
+                if (!file.exists()) {
+                    icon = "nx-badpath-icon";
+                    notFoundTitle = getString("location.notfound");
+                } else if (file.isDirectory()) {
                     icon = "nx-folder-icon";
+                } else if (!file.getName().endsWith(".index")) {
+                    icon = "nx-badpath-icon";
+                    notFoundTitle = getString("location.notindex");
                 }
                 buffer.insert(buffer.lastIndexOf("\">") + 1,
                         " class=\"" + icon + "\" title=\""
-                      + StringEscapeUtils.escapeHtml4(
+                      + StringEscapeUtils.escapeHtml4(notFoundTitle + 
                               file.getAbsolutePath()) +  "\"");
             }
         };

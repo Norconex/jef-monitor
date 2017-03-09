@@ -1,5 +1,5 @@
 /* 
-   Copyright 2007-2014 Norconex Inc.
+   Copyright 2007-2017 Norconex Inc.
  
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,41 +16,21 @@
 window.onload = setupFunc;
  
 function setupFunc() {
-    document.getElementsByTagName('body')[0].onclick = clickFunc;
-    hideBusysign();
-    Wicket.Event.subscribe('/ajax/call/beforeSend', function( attributes, jqXHR, settings ) {
-        showBusysign();
+    hideErrorSign();
+    Wicket.Event.subscribe('/ajax/call/failure', function( attributes, jqXHR, settings ) {
+        showErrorSign();
     });
-    Wicket.Event.subscribe('/ajax/call/complete', function( attributes, jqXHR, textStatus) {
-        hideBusysign();
+    Wicket.Event.subscribe('/ajax/call/success', function( attributes, jqXHR, textStatus) {
+        hideErrorSign();
     });
 }
  
-function hideBusysign() {
+function hideErrorSign() {
     $("#ajaxveil").slideUp("fast");
 }
 
-function showBusysign() {
+function showErrorSign() {
     $("#ajaxveil").slideDown();
 }
 
-function clickFunc(eventData) {
-    var clickedElement = (window.event) ? event.srcElement : eventData.target;
-    var tagName = clickedElement.tagName.toUpperCase();
-    var parentTagName = clickedElement.parentNode.tagName.toUpperCase();
-    
-    if ((tagName == 'BUTTON' || tagName == 'A' || parentTagName == 'A'
-          || (tagName == 'INPUT' && (clickedElement.type.toUpperCase() == 'BUTTON'
-                || clickedElement.type.toUpperCase() == 'SUBMIT')))
-      && clickedElement.parentNode.id.toUpperCase() != 'NOBUSY'
-      && !isBusyDisabled(clickedElement)) {
-        showBusysign();
-    }
-}
-
-function isBusyDisabled(theElement) {
-	var cssClasses = (" " + theElement.className.toUpperCase() + " ").replace(/[\n\t]/g, " ");
-	return cssClasses.indexOf(" NOBUSY ") > -1
-        || cssClasses.indexOf(" SELECTPICKER ") > -1; 
-}
 

@@ -15,6 +15,8 @@
    limitations under the License.
  -->
 <html xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+</wicket:head>
 <wicket:panel>
 
 <div class="well clearfix">
@@ -25,33 +27,39 @@
     <div style="margin-bottom: 20px;"><wicket:message key="location.desc">Description</wicket:message></div>
   </div>
 
-  <div wicket:id="addFileModal"></div>
-  <div wicket:id="addFolderModal"></div>
-
-
   <div wicket:id="formWrapper">
     <form class="form">
-      <div class="col-sm-9">
-        <select wicket:id="locations" class="form-control" multiple="multiple" size="7">
-          <option>selections here</option>
-        </select>
+      <div id="addPathGroup">
+        <div class="col-sm-9" style="margin-bottom: 10px;">
+          <input wicket:id="addPath" class="form-control" 
+              placeholder="Full directory or file path">
+        </div>
+        <div class="col-sm-3">
+          <button wicket:id="addPathButton" class="btn btn-default btn-block btn-sm">
+            <i class="fa fa-plus"></i> <wicket:message key="btn.addPath">Add</wicket:message>
+          </button>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <p>
-          <button wicket:id="addFileButton" class="btn btn-default btn-block btn-sm">
-            <i class="fa fa-plus"></i> <wicket:message key="btn.addFiles">Add Files...</wicket:message>
-          </button>
-        </p>
-        <p>
-          <button wicket:id="addFolderButton" class="btn btn-default btn-block btn-sm">
-            <i class="fa fa-plus"></i> <wicket:message key="btn.addDirectories">Add Directories...</wicket:message>
-          </button>
-        </p>
-        <p>
+      <script>
+      $('#addPathGroup input').keypress(function (e) {
+          var key = e.which;
+          if(key == 13) {
+        	  //$('#addPathGroup button').click();
+              return false;  
+          }
+      });
+      </script>
+      <div>
+        <div class="col-sm-9">
+          <select wicket:id="locations" class="form-control" multiple="multiple" size="7">
+            <option>selections here</option>
+          </select>
+        </div>
+        <div class="col-sm-3">
           <button wicket:id="removeButton" class="btn btn-default btn-block btn-sm">
             <i class="fa fa-minus"></i> <wicket:message key="btn.remove">Remove</wicket:message>
           </button>
-        </p>
+        </div>
       </div>
     </form>
   </div>
