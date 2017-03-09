@@ -164,9 +164,13 @@ public final class ConfigurationDAO {
         List<IJobAction> actions = new ArrayList<IJobAction>();
         for (HierarchicalConfiguration node : nodes) {
             String actionClass = node.getString("");
-            IJobAction action = 
-                    (IJobAction) Class.forName(actionClass).newInstance();
-            actions.add(action);
+            try {
+                IJobAction action = 
+                        (IJobAction) Class.forName(actionClass).newInstance();
+                actions.add(action);
+            } catch (ClassNotFoundException e) {
+                LOG.error("Could not load action: " + actionClass, e);
+            }
         }
         return actions.toArray(new IJobAction[]{});
     }
