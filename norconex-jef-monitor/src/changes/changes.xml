@@ -7,7 +7,7 @@
   </properties>
   <body>
 
-    <release version="4.0.5-SNAPSHOT" date="2017-??-??" description="Maintenance release">
+    <release version="4.0.5" date="2017-04-25" description="Maintenance release">
       <action dev="essiembre" type="update">
         Removed Ajax "Progress" indicator at the top and replaced with an error
         message when calls to JEF Monitor fails. 
