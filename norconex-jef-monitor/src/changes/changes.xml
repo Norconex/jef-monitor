@@ -7,6 +7,12 @@
   </properties>
   <body>
 
+    <release version="4.0.6-SNAPSHOT" date="2019-??-??" description="Maintenance release">
+      <action dev="essiembre" type="update">
+        Maven dependency updates: Norconex JEF 4.1.2.
+      </action>
+    </release>
+
     <release version="4.0.5" date="2017-04-25" description="Maintenance release">
       <action dev="essiembre" type="update">
         Removed Ajax "Progress" indicator at the top and replaced with an error

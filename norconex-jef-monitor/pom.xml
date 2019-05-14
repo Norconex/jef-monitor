@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.norconex.jef</groupId>
     <artifactId>norconex-jef-monitor</artifactId>
-    <version>4.0.5</version>
+    <version>4.0.6-SNAPSHOT</version>
     <name>Norconex JEF Monitor</name>
     <description>JEF Monitor is a standalone web-based application offering a glance view of all running jobs, with possibilities to perform actions on them.</description>
     <inceptionYear>2007</inceptionYear>
@@ -121,7 +121,7 @@
         <dependency>
         	<groupId>com.norconex.jef</groupId>
         	<artifactId>norconex-jef</artifactId>
-        	<version>4.1.0</version>
+        	<version>4.1.2-SNAPSHOT</version>
         </dependency>
         <dependency>
         	<groupId>com.norconex.commons</groupId>
